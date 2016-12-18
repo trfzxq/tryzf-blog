@@ -1,9 +1,9 @@
 <template lang="html">
-  <header>
+  <header :class="{ isScrollClass: isScroll }">
     <div class="col-sm-5">
-      <a id="logo" class="col-sm-5">
-        <img :src="logo"/>
-      </a>
+      <router-link id="logo_a" class="col-sm-5" to="/">
+        <img :src="logo" class="logo"/>
+      </router-link>
     </div>
     <div class="header-right col-sm-7">
       <Search class="Search"></Search>
@@ -32,14 +32,25 @@ export default {
           path: '/3',
           title: '菜单-3'
         }
-      ]
+      ],
+      isScroll: false
     }
   },
-  computed: {
+  mounted () {
+    var vm = this
+    window.onscroll = function () {
+      vm.changeHeaderPosition(document)
+    }
   },
-  ready () {},
-  attached () {},
   methods: {
+    changeHeaderPosition (document) {
+      let top = document.body.scrollTop - 100
+      if (top <= 0) {
+        this.isScroll = false
+      } else {
+        this.isScroll = true
+      }
+    }
   },
   components: {
     NavCompoent,
@@ -50,11 +61,26 @@ export default {
 
 <style lang="css" scoped>
   header {
-    position: relative;
+    width:100%;
+    position: fixed;
     height:80px;
     line-height: 80px;
+    z-index:9999999999;
+    top:0;
+    transition:all 200ms ease-out;
+  }
+  .logo {
+    width:64px;
+    transition:width 200ms ease-out;
+    transform-origin: center;
+  }
+  .isScrollClass {
     background:rgba(255,255,255,0.3);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+    top:-10px;
+  }
+  .isScrollClass .logo {
+    width:40px;
   }
   .header-right {
     padding-top:10px;

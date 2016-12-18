@@ -8,6 +8,7 @@ import store from './store/index'
 import routes from './routes.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/styles/index.css'
+import { infiniteScroll } from 'vue-infinite-scroll'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -21,6 +22,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  directives: { infiniteScroll },
   store,
   render: h => h(App)
 })

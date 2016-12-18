@@ -3,6 +3,7 @@
     <headerComponent></headerComponent>
     <minHeader></minHeader>
     <BodyComponent></BodyComponent>
+    <Comment></Comment>
     <UserInfo></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
@@ -14,6 +15,7 @@ import minHeader from '../common/MinHeader'
 import BodyComponent from './Body'
 import UserInfo from '../common/UserInfo'
 import FooterComponent from '../common/Footer'
+import Comment from './Comment'
 
 export default {
   data () {
@@ -23,9 +25,13 @@ export default {
   components: {
     headerComponent,
     minHeader,
-    BodyComponent,
     UserInfo,
-    FooterComponent
+    BodyComponent,
+    FooterComponent,
+    Comment
   }
 }
 </script>
+
+<style lang="css">
+</style>
