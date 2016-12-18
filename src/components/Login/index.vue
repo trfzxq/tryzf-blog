@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import API from 'api/index'
+
 export default {
   data () {
     return {
@@ -40,6 +42,13 @@ export default {
         window.alert('帐号或密码不能为空！')
         return
       }
+      let userInfo = {
+        'username': this.username,
+        'password': this.password
+      }
+      API.localLogin(userInfo).then(function (data) {
+        console.log(data)
+      })
     }
   }
 }

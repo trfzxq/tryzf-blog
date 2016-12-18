@@ -1,0 +1,13 @@
+[
+  {
+    "type": "Article",
+    "title": "Hello World",
+    "date": "2016/10/21",
+    "content": "你好，世界!"
+  },
+  {
+    "type": "User",
+    "username": "zlj",
+    "password": "11223344"
+  }
+]
