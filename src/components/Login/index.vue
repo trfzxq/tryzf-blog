@@ -4,11 +4,11 @@
     <form class="form">
       <div class="form-group">
         <label>Username</label>
-        <input type="text" class="form-control" placeholder="username" v-model="username"/>
+        <input type="text" class="form-control" placeholder="username" v-model.trim="username"/>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control" placeholder="password" v-model="password"/>
+        <input type="password" class="form-control" placeholder="password" v-model.trim="password"/>
       </div>
       <div class="clearfix">
         <label class="checkbox_label">
@@ -25,7 +25,10 @@ export default {
   data () {
     return {
       password: null,
-      username: null
+      username: null,
+      message: {
+        title: '请假'
+      }
     }
   },
   computed: {},
@@ -33,10 +36,12 @@ export default {
   attached () {},
   methods: {
     submitLogin () {
-      console.log(this.password)
+      if (!this.username || !this.password) {
+        window.alert('帐号或密码不能为空！')
+        return
+      }
     }
-  },
-  components: {}
+  }
 }
 </script>
 <style lang="css" scoped>
