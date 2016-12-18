@@ -1,3 +1,1 @@
-export const SET_RESULT = 'SET_RESULT'
-export const COLLECT_IT = 'COLLECT_IT'
-export const DELETE_COLLECTION = 'DELETE_COLLECTION'
+export const LOGIN = 'LOGIN'

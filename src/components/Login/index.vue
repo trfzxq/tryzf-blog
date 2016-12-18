@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import API from 'api/index'
-
 export default {
   data () {
     return {
@@ -30,7 +28,8 @@ export default {
       username: null,
       message: {
         title: '请假'
-      }
+      },
+      hello: null
     }
   },
   computed: {},
@@ -46,8 +45,9 @@ export default {
         'username': this.username,
         'password': this.password
       }
-      API.localLogin(userInfo).then(function (data) {
-        console.log(data)
+      this.$store.dispatch('login', userInfo).then(() => {
+        let result = this.$store.state.loginState
+        window.alert(result.msg)
       })
     }
   }

@@ -18,6 +18,23 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  const accessToken = window.sessionStorage.getItem('accessToken')
+  const allowArray = ['home', 'article', 'login']
+  let isBreak = 0
+  allowArray.forEach((item) => {
+    console.log(item, to.name)
+    if (to.name === item) {
+      isBreak += 1
+    }
+  })
+  if (isBreak || accessToken) {
+    next()
+  } else {
+    next('/login')
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

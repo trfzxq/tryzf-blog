@@ -6,7 +6,7 @@ import actions from './actions.js'
 Vue.use(Vuex)
 
 const state = {
-  result: []
+  loginState: null
 }
 
 export default new Vuex.Store({
