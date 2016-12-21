@@ -27,6 +27,7 @@ export default {
   created () {
     this.getArticle()
     this.getUserInfo()
+    this.getSocailContact()
   },
   methods: {
     getArticle () {
@@ -42,6 +43,13 @@ export default {
         let userInfo = this.$store.state.userInfo
         this.userInfo = userInfo
         console.log(userInfo)
+      })
+    },
+    getSocailContact () {
+      this.$store.dispatch('getSocailContact')
+      .then(() => {
+        let socailContact = this.$store.state.socailContact
+        console.log(socailContact)
       })
     }
   },

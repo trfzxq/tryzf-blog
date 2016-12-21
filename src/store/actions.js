@@ -29,5 +29,12 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  getSocailContact ({ commit }) {
+    return api.getSocailContact().then(response => {
+      commit(types.GETSOCAILCONTACT, response.data.getSocailContact)
+    }, response => {
+      console.log(response)
+    })
   }
 }
