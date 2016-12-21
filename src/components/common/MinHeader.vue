@@ -27,7 +27,6 @@ export default {
       let canvas, context, height, width, xAxis, yAxis
       function init () {
         canvas = vm.$refs.canvas
-        console.log(canvas)
         canvas.width = document.documentElement.clientWidth
         canvas.height = 300
         context = canvas.getContext('2d')

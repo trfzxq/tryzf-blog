@@ -12,16 +12,28 @@
     "title": "Hello World",
     "date": "2016/10/21",
     "author": "tryzf",
-    "content": "你好，世界!",
+    "content": "你好，世界2222222222222222222222222222222222222222222222222222222222!",
     "types": [{"text":"css","path":"/article/type/css"}]
   },
   {
     "type": "User",
     "username": "zlj",
-    "password": "11223344"
+    "password": "11223344",
+    "title": "tryzf",
+    "headURL": "http://tse1.mm.bing.net/th?&id=OIP.M4343cb2365f84528b061d4a7ec35fd9fo0&w=199&h=162&c=0&pid=1.9&rs=0&p=0&r=0",
+    "motto": "server the people"
   },
   {
-    "type": "Othen",
-    "list": []
+    "type": "Nav",
+    "list": [{"title": "首页", "path": "/"}]
+  },
+  {
+    "type": "SocialContact",
+    "list": [
+      {
+        "type": "",
+        "path": "/"
+      }
+    ]
   }
 ]

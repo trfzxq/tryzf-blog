@@ -3,7 +3,7 @@
     <headerComponent></headerComponent>
     <minHeader></minHeader>
     <BodyComponent :article="article"></BodyComponent>
-    <Comment></Comment>
+    <Comment :comment="article"></Comment>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -29,7 +29,6 @@ export default {
       this.$store.dispatch('getArticleDetaile', this.$route.params.id)
       .then(() => {
         let article = this.$store.state.articleDetaile
-        console.log(article)
         this.article = article
       })
     }
