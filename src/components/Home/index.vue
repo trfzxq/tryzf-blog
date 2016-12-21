@@ -3,7 +3,7 @@
     <headerComponent></headerComponent>
     <minHeader v-once></minHeader>
     <BodyComponent :articleList="articleList"></BodyComponent>
-    <UserInfo :userInfo="userInfo"></UserInfo>
+    <UserInfo :userInfo="userInfo" :socailContactList="socailContactList"></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     return {
       userInfo: [],
       articleList: [],
+      socailContactList: [],
       start: 0,
       sizePage: 10
     }
@@ -42,14 +43,14 @@ export default {
       .then(() => {
         let userInfo = this.$store.state.userInfo
         this.userInfo = userInfo
-        console.log(userInfo)
       })
     },
     getSocailContact () {
       this.$store.dispatch('getSocailContact')
       .then(() => {
-        let socailContact = this.$store.state.socailContact
-        console.log(socailContact)
+        let socailContactList = this.$store.state.socailContact
+        this.socailContactList = socailContactList
+        console.log(socailContactList)
       })
     }
   },

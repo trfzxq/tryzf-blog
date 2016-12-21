@@ -32,7 +32,7 @@ export default {
   },
   getSocailContact ({ commit }) {
     return api.getSocailContact().then(response => {
-      commit(types.GETSOCAILCONTACT, response.data.getSocailContact)
+      commit(types.GETSOCAILCONTACT, response.data.socialContact)
     }, response => {
       console.log(response)
     })

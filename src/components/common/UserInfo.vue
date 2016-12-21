@@ -12,8 +12,8 @@
       </div>
       <div class="col-sm-4">
         <ul class="socail-contact_ul">
-          <li v-for="item in socialContact" key>
-            <router-link :to="item.path"><img :src="item.icon" v-if="item.isAction"/></router-link>
+          <li v-for="item in socailContactList" key="item._id">
+            <router-link :to="item.path"><img :src="item.src" v-if="item.isAction"/></router-link>
           </li>
         </ul>
       </div>
@@ -23,33 +23,7 @@
 
 <script>
 export default {
-  props: ['userInfo'],
-  data () {
-    return {
-      socialContact: [
-        {
-          icon: require('assets/img/github.png'),
-          path: 'www.github.com',
-          isAction: true
-        },
-        {
-          icon: require('assets/img/wb.png'),
-          path: 'www.weibo.com',
-          isAction: true
-        },
-        {
-          icon: require('assets/img/wx.png'),
-          path: 'www.weixin.com',
-          isAction: true
-        }
-      ]
-    }
-  },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
+  props: ['userInfo', 'socailContactList']
 }
 </script>
 

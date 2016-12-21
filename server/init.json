@@ -28,16 +28,25 @@
   },
   {
     "type": "Nav",
-    "list": [{"title": "首页", "path": "/"}]
+    "text": "首页",
+    "path": "/"
   },
   {
     "type": "SocialContact",
-    "list": [
-      {
-        "type": "",
-        "isShow": true,
-        "path": "/"
-      }
-    ]
+    "src": "http://localhost:3000/img/wx.png",
+    "isAction": true,
+    "path": "/"
+  },
+  {
+    "type": "SocialContact",
+    "src": "http://localhost:3000/img/wb.png",
+    "isAction": true,
+    "path": "/"
+  },
+  {
+    "type": "SocialContact",
+    "src": "http://localhost:3000/img/github.png",
+    "isAction": true,
+    "path": "/"
   }
 ]

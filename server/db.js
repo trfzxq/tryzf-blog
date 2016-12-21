@@ -17,11 +17,14 @@ const articleSchema = new Schema({
 })
 
 const navSchema = new Schema({
-  list: Array
+  text: String,
+  path: String
 })
 
 const socialContactSchema = new Schema({
-  list: Array
+  src: String,
+  path: String,
+  isAction: Boolean
 })
 
 const userInfoSchema = new Schema({
