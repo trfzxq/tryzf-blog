@@ -49,7 +49,18 @@ module.exports = function (app) {
       if (err) {
         console.log(err)
       } else {
-        res.json({'article': data});
+        res.json({'article': data})
+      }
+    })
+  });
+
+  /*获取用户信息接口*/
+  app.get('/api/getUserInfo', (req, res) => {
+    db.User.findOne().exec((err, data) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json({userInfo: data})
       }
     })
   })

@@ -32,6 +32,7 @@
     "list": [
       {
         "type": "",
+        "isShow": true,
         "path": "/"
       }
     ]
