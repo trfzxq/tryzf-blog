@@ -11,12 +11,19 @@ const userSchema = new Schema({
 const articleSchema = new Schema({
   title: String,
   date: Date,
-  content: String
+  content: String,
+  author: String,
+  types: Array
+})
+
+const OthenSchema = new Schema({
+  list: Array
 })
 
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema),
+  Othen: mongoose.model('Othen', OthenSchema),
   initialized: false
 }
 
@@ -36,7 +43,7 @@ const initialize = function () {
 }
 
 
-mongoose.connect('mongodb://localhost/drifter')
+mongoose.connect('mongodb://localhost/zhangfu')
 
 const db = mongoose.connection
 

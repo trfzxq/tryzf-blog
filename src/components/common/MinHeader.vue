@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="m-header">
     <figure class="m-bg" :style='{background:bg}'></figure>
-    <canvas id="canvas" class="canvas">你看不到我</canvas>
+    <canvas class="canvas" ref="canvas">你看不到我</canvas>
   </div>
 </template>
 
@@ -17,51 +17,59 @@ export default {
       return 'url(' + src + ')'
     }
   },
-  watch: {
-    '$route': 'createCanvas'
-  },
   mounted () {
     this.createCanvas()
   },
   methods: {
     createCanvas () {
-      var canvas = document.getElementById('canvas')
-      var ctx = canvas.getContext('2d')
-      canvas.width = canvas.parentNode.offsetWidth
-      canvas.height = canvas.parentNode.offsetHeight
-      var requestAnimFrame = (function () {
-        return function (callback) {
-          setTimeout(callback, 1000 / 60)
-        }
-      })()
-
-      var step = 0
-      var lines = [ 'rgba(255,255,255, 0.9)', 'rgba(255,255,255, 0.6)', 'rgba(255,255,255, 0.9)' ]
-      function loop () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        step++
-        for (var j = lines.length - 1; j >= 0; j--) {
-          ctx.fillStyle = lines[j]
-          var angle = (step + j * 45) * Math.PI / 180
-          var deltaHeight = Math.sin(angle) * 50
-          var deltaHeightRight = Math.cos(angle) * 50
-          ctx.beginPath()
-          ctx.moveTo(0, canvas.height / 2 + deltaHeight)
-          /*
-            绘制弧线 bezierCurveTo(cpX1, cpY1, cpX2, cpY2, x, y)
-          */
-          ctx.bezierCurveTo(canvas.width / 2, canvas.height / 2 + deltaHeight - 150,
-            canvas.width / 2, canvas.height / 2 + deltaHeightRight - 150,
-            canvas.width, canvas.height / 2 + deltaHeightRight)
-          ctx.lineTo(canvas.width, canvas.height)
-          ctx.lineTo(0, canvas.height)
-          ctx.lineTo(0, canvas.height / 2 + deltaHeight)
-          ctx.closePath()
-          ctx.fill()
-        }
-        requestAnimFrame(loop)
+      let unit = 100
+      let vm = this
+      let canvas, context, height, width, xAxis, yAxis
+      function init () {
+        canvas = vm.$refs.canvas
+        console.log(canvas)
+        canvas.width = document.documentElement.clientWidth
+        canvas.height = 300
+        context = canvas.getContext('2d')
+        height = canvas.height
+        width = canvas.width
+        xAxis = Math.floor(height / 2)
+        yAxis = 0
+        draw()
       }
-      loop()
+      function draw () {
+        context.clearRect(0, 0, width, height)
+        drawWave('#fff', 1, 3, 0)
+        draw.seconds = draw.seconds + 0.009
+        draw.t = draw.seconds * Math.PI
+        setTimeout(draw, 35)
+      }
+      draw.seconds = 0
+      draw.t = 0
+
+      function drawWave (fillcolor, alpha, zoom, delay) {
+        context.fillStyle = fillcolor
+        context.globalAlpha = alpha
+
+        context.beginPath()
+        drawSine(draw.t / 0.5, zoom, delay)
+        context.lineTo(width + 10, height)
+        context.lineTo(0, height)
+        context.closePath()
+        context.fill()
+      }
+
+      function drawSine (t, zoom, delay) {
+        let x = t
+        let y = Math.sin(x) / zoom
+        context.moveTo(yAxis, unit * y + xAxis)
+        for (let i = yAxis; i <= width + 10; i += 10) {
+          x = t + (-yAxis + i) / unit / zoom
+          y = Math.sin(x - delay) / 3
+          context.lineTo(i, unit * y + xAxis)
+        }
+      }
+      init()
     }
   }
 }

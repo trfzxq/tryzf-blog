@@ -2,9 +2,8 @@
   <div>
     <headerComponent></headerComponent>
     <minHeader></minHeader>
-    <BodyComponent></BodyComponent>
+    <BodyComponent :article="article"></BodyComponent>
     <Comment></Comment>
-    <UserInfo></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -13,19 +12,31 @@
 import headerComponent from '../common/Header'
 import minHeader from '../common/MinHeader'
 import BodyComponent from './Body'
-import UserInfo from '../common/UserInfo'
 import FooterComponent from '../common/Footer'
 import Comment from './Comment'
 
 export default {
   data () {
     return {
+      article: []
+    }
+  },
+  created () {
+    this.getArticle()
+  },
+  methods: {
+    getArticle () {
+      this.$store.dispatch('getArticleDetaile', this.$route.params.id)
+      .then(() => {
+        let article = this.$store.state.articleDetaile
+        console.log(article)
+        this.article = article
+      })
     }
   },
   components: {
     headerComponent,
     minHeader,
-    UserInfo,
     BodyComponent,
     FooterComponent,
     Comment

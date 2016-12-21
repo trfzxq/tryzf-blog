@@ -6,6 +6,20 @@ export default {
     return api.localLogin(userInfo).then(response => {
       commit(types.LOGIN, response.data)
     }, (response) => {
+      console.log('This is login error at actions:', response)
+    })
+  },
+  getArticle ({ commit }, limit, sizePage) {
+    return api.getArticle(limit, sizePage).then(response => {
+      commit(types.GETARTICLE, response.data.articles)
+    }, response => {
+      console.log('This is get article error at actions', response)
+    })
+  },
+  getArticleDetaile ({ commit }, id) {
+    return api.getArticleDetaile(id).then(response => {
+      commit(types.GETARTICLEDETAILE, response.data.article)
+    }, response => {
       console.log(response)
     })
   }

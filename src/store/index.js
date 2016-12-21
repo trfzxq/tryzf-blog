@@ -6,7 +6,9 @@ import actions from './actions.js'
 Vue.use(Vuex)
 
 const state = {
-  loginState: null
+  loginState: null,
+  articles: null,
+  articleDetaile: null
 }
 
 export default new Vuex.Store({

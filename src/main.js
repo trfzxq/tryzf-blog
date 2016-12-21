@@ -9,21 +9,24 @@ import routes from './routes.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/styles/index.css'
 import { infiniteScroll } from 'vue-infinite-scroll'
+import cookie from 'assets/js/cookie'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 router.beforeEach((to, from, next) => {
-  const accessToken = window.sessionStorage.getItem('accessToken')
+  const accessToken = cookie.getCookie('token')
   const allowArray = ['home', 'article', 'login']
   let isBreak = 0
   allowArray.forEach((item) => {
-    console.log(item, to.name)
     if (to.name === item) {
       isBreak += 1
     }

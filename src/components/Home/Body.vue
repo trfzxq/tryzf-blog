@@ -2,19 +2,19 @@
   <div class="article-title_list">
     <ul class="col-xs-8 col-xs-offset-2 article-list_ul">
       <li v-for="item in articleList" :key="item.id">
-        <router-link :to="'/article/' + item.id" class="title">{{ item.title }}</router-link>
-        <time class="time">{{ item.time }}</time>
+        <router-link :to="'/article/' + item._id" class="title">{{ item.title }}</router-link>
+        <time class="time">{{ item.date }}</time>
         <article class="abstract">
-          {{ item.abstract }}
+          {{ item.content }}
         </article>
         <div class="article-info clearfix">
           <div class="pull-left article-author">
             <i class="glyphicon glyphicon-user"></i>
-              {{ item.articleInfo.author }}
+              {{ item.author }}
           </div>
           <div class="pull-left article-type">
             <i class="glyphicon glyphicon-tags"></i>
-            <span v-for="type in item.articleInfo.types">
+            <span v-for="type in item.types">
               <router-link :to="type.path">{{ type.text }}</router-link>
             </span>
           </div>
@@ -26,55 +26,7 @@
 
 <script>
 export default {
-  data () {
-    return {
-      articleList: [
-        {
-          id: '1abc',
-          title: '大白讲故事之诡异钥匙丢失',
-          time: '2016-12-15',
-          abstract: '建议尽可能使用 v-for 来提供 key ，除非迭代 DOM 内容足够简单，或者你是故意要依赖于默认行为来获得性能提升。因为它是 Vue 识别节点的一个通用机制， key 并不特别与 v-for 关联，key 还具有其他用途，我们将在后面的指南中看到其他用途。',
-          articleInfo: {
-            author: 'tryzf',
-            types: [
-              {
-                text: 'css',
-                path: '/css?sdsdd'
-              },
-              {
-                text: 'html',
-                path: 'html?sdfs'
-              }
-            ]
-          }
-        },
-        {
-          id: '1abc',
-          title: '大白讲故事之诡异钥匙丢失',
-          time: '2016-12-15',
-          abstract: '建议尽可能使用 v-for 来提供 key ，除非迭代 DOM 内容足够简单，或者你是故意要依赖于默认行为来获得性能提升。因为它是 Vue 识别节点的一个通用机制， key 并不特别与 v-for 关联，key 还具有其他用途，我们将在后面的指南中看到其他用途。',
-          articleInfo: {
-            author: 'tryzf',
-            types: [
-              {
-                text: 'css',
-                path: '/css?sdsdd'
-              },
-              {
-                text: 'html',
-                path: 'html?sdfs'
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
+  props: ['articleList']
 }
 </script>
 
@@ -89,6 +41,7 @@ export default {
     display: block;
     margin-bottom:5px;
     letter-spacing:2px;
+    margin-top: 10px;
   }
   .title {
     color:#2c3e50;

@@ -1,27 +1,15 @@
 <template lang="html">
   <div class="col-xs-8 col-xs-offset-2">
-    <span class='title'>{{ articleDetaile.title }}</span>
+    <span class='title'>{{ article.title }}</span>
     <article class="aritcle_content">
-      {{ articleDetaile.article }}
+      {{ article.content }}
     </article>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      articleDetaile: {
-        title: '你懂的文章！！！',
-        article: '文章的内容'
-      }
-    }
-  },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
+  props: ['article']
 }
 </script>
 

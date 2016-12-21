@@ -3,11 +3,25 @@
     "type": "Article",
     "title": "Hello World",
     "date": "2016/10/21",
-    "content": "你好，世界!"
+    "content": "你好，世界!",
+    "author": "tryzf",
+    "types": [{"text":"css","path":"/article/type/css"}]
+  },
+  {
+    "type": "Article",
+    "title": "Hello World",
+    "date": "2016/10/21",
+    "author": "tryzf",
+    "content": "你好，世界!",
+    "types": [{"text":"css","path":"/article/type/css"}]
   },
   {
     "type": "User",
     "username": "zlj",
     "password": "11223344"
+  },
+  {
+    "type": "Othen",
+    "list": []
   }
 ]
