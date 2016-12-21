@@ -63,7 +63,29 @@ module.exports = function (app) {
         res.json({userInfo: data})
       }
     })
-  })
+  });
+
+  /*获取社交帐号信息*/
+  app.get('/api/getSocialContact', (req, res) => {
+    db.SocialContact.find().exec((err, data) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json({socialContact: data})
+      }
+    })
+  });
+
+  /*获取导航菜单*/
+  app.get('/api/getNavList', (req, res) => {
+    db.Nav.find().exec((err, data) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json({navList: data})
+      }
+    })
+  });
 }
 
 //创建token
