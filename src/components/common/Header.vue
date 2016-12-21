@@ -7,7 +7,7 @@
     </div>
     <div class="header-right col-sm-7">
       <Search class="Search"></Search>
-      <NavCompoent :navData="navData" class="NavCompoent"></NavCompoent>
+      <NavCompoent class="NavCompoent"></NavCompoent>
     </div>
   </header>
 </template>
@@ -19,20 +19,6 @@ export default {
   data () {
     return {
       logo: 'http://yumemor.com/hexo-theme-varaint/favicon.png',
-      navData: [
-        {
-          path: '/1',
-          title: '菜单-1'
-        },
-        {
-          path: '/2',
-          title: '菜单-2'
-        },
-        {
-          path: '/3',
-          title: '菜单-3'
-        }
-      ],
       isScroll: false
     }
   },

@@ -29,6 +29,7 @@ export default {
     this.getArticle()
     this.getUserInfo()
     this.getSocailContact()
+    this.getNavList()
   },
   methods: {
     getArticle () {
@@ -52,6 +53,9 @@ export default {
         this.socailContactList = socailContactList
         console.log(socailContactList)
       })
+    },
+    getNavList () {
+      this.$store.dispatch('getNavList')
     }
   },
   components: {

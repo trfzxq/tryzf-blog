@@ -6,8 +6,8 @@
         <i class="glyphicon glyphicon-remove leave_nav_icon" @click="closeNav"></i>
       </div>
       <ul>
-        <li v-for='item in navData' key>
-          <router-link :to="item.path">{{item.title}}</router-link>
+        <li v-for='item in navList' key>
+          <router-link :to="item.path">{{item.text}}</router-link>
         </li>
       </ul>
     </nav>
@@ -16,17 +16,15 @@
 
 <script>
 export default {
-  props: ['navData'],
   data () {
     return {
+      navList: [],
       isActive: false
     }
   },
-  computed: {},
-  ready () {},
-  attached () {},
   methods: {
     openNav () {
+      this.navList = this.$store.state.navList
       this.isActive = !this.isActive
     },
     closeNav () {

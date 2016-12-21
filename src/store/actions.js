@@ -36,5 +36,12 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  getNavList ({ commit }) {
+    return api.getNavList().then(response => {
+      commit(types.GETNAVLIST, response.data.navList)
+    }, response => {
+      console.log(response)
+    })
   }
 }
