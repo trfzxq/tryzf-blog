@@ -22,5 +22,12 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  getUserInfo ({ commit }) {
+    return api.getUserInfo().then(response => {
+      commit(types.GETUSERINFO, response.data.userInfo)
+    }, response => {
+      console.log(response)
+    })
   }
 }

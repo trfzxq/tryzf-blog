@@ -56,7 +56,7 @@ module.exports = function (app) {
 
   /*获取用户信息接口*/
   app.get('/api/getUserInfo', (req, res) => {
-    db.User.findOne().exec((err, data) => {
+    db.UserInfo.findOne().exec((err, data) => {
       if (err) {
         console.log(err)
       } else {

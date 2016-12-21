@@ -3,10 +3,10 @@
     <div class="col-xs-10 col-xs-offset-1">
       <div class="col-sm-8">
         <figure class="col-sm-3">
-          <img :src="userInfo.header_pic" class="user_head_pic"/>
+          <img :src="userInfo.headURL" class="user_head_pic"/>
         </figure>
         <div class="col-sm-8">
-          <h1 class="name">{{ userInfo.name }}</h1>
+          <h1 class="name">{{ userInfo.username }}</h1>
           <h3 class="motto">{{ userInfo.motto }}</h3>
         </div>
       </div>
@@ -23,13 +23,9 @@
 
 <script>
 export default {
+  props: ['userInfo'],
   data () {
     return {
-      userInfo: {
-        header_pic: 'http://tse1.mm.bing.net/th?&id=OIP.M844b52af945b806e0ac715466e436b67o0&w=300&h=225&c=0&pid=1.9&rs=0&p=0&r=0',
-        name: 'motto',
-        motto: 'Server the people'
-      },
       socialContact: [
         {
           icon: require('assets/img/github.png'),

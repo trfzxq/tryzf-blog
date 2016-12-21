@@ -3,7 +3,7 @@
     <headerComponent></headerComponent>
     <minHeader v-once></minHeader>
     <BodyComponent :articleList="articleList"></BodyComponent>
-    <UserInfo></UserInfo>
+    <UserInfo :userInfo="userInfo"></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -18,6 +18,7 @@ import FooterComponent from '../common/Footer'
 export default {
   data () {
     return {
+      userInfo: [],
       articleList: [],
       start: 0,
       sizePage: 10
@@ -25,15 +26,22 @@ export default {
   },
   created () {
     this.getArticle()
+    this.getUserInfo()
   },
   methods: {
     getArticle () {
-      let vm = this
       this.$store.dispatch('getArticle', this.start, this.sizePage)
       .then(() => {
         let articleList = this.$store.state.articles
-        console.log(articleList)
-        vm.articleList = articleList
+        this.articleList = articleList
+      })
+    },
+    getUserInfo () {
+      this.$store.dispatch('getUserInfo')
+      .then(() => {
+        let userInfo = this.$store.state.userInfo
+        this.userInfo = userInfo
+        console.log(userInfo)
       })
     }
   },

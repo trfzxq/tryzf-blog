@@ -9,5 +9,14 @@ export default {
   },
   [types.GETARTICLEDETAILE] (state, data) {
     state.articleDetaile = data
+  },
+  [types.GETUSERINFO] (state, data) {
+    state.userInfo = data
+  },
+  [types.GETSOCAILCONTACT] (state, data) {
+    state.socailContact = data
+  },
+  [types.GETNAVLIST] (state, data) {
+    state.navList = data
   }
 }

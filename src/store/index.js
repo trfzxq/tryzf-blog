@@ -8,7 +8,10 @@ Vue.use(Vuex)
 const state = {
   loginState: null,
   articles: null,
-  articleDetaile: null
+  articleDetaile: null,
+  userInfo: null,
+  navList: null,
+  socailContact: null
 }
 
 export default new Vuex.Store({

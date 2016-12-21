@@ -5,10 +5,7 @@ const init = require('./init.json')
 
 const userSchema = new Schema({
   username: String,
-  password: String,
-  headURL: String,
-  title: String,
-  motto: String
+  password: String
 })
 
 const articleSchema = new Schema({
@@ -23,15 +20,22 @@ const navSchema = new Schema({
   list: Array
 })
 
-const socialContact = new Schema({
+const socialContactSchema = new Schema({
   list: Array
+})
+
+const userInfoSchema = new Schema({
+  username: String,
+  headURL: String,
+  motto: String
 })
 
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema),
   Nav: mongoose.model('Nav', navSchema),
-  SocialContact: mongoose.model('SocialContact', socialContact),
+  SocialContact: mongoose.model('SocialContact', socialContactSchema),
+  UserInfo: mongoose.model('UserInfo', userInfoSchema),
   initialized: false
 }
 
