@@ -16,9 +16,9 @@ import FooterComponent from '../common/Footer'
 import Comment from './Comment'
 
 export default {
-  data () {
-    return {
-      article: []
+  computed: {
+    article () {
+      return this.$store.state.articleDetaile
     }
   },
   created () {
@@ -27,10 +27,6 @@ export default {
   methods: {
     getArticle () {
       this.$store.dispatch('getArticleDetaile', this.$route.params.id)
-      .then(() => {
-        let article = this.$store.state.articleDetaile
-        this.article = article
-      })
     }
   },
   components: {

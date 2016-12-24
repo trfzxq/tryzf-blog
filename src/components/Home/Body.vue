@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="article-title_list">
     <ul class="col-xs-8 col-xs-offset-2 article-list_ul">
-      <li v-for="item in articleList" :key="item.id">
+      <li v-for="item in articlesList" :key="item.id">
         <router-link :to="'/article/' + item._id" class="title">{{ item.title }}</router-link>
         <time class="time">{{ item.date }}</time>
         <article class="abstract">
@@ -15,7 +15,7 @@
           <div class="pull-left article-type">
             <i class="glyphicon glyphicon-tags"></i>
             <span v-for="type in item.types">
-              <router-link :to="type.path">{{ type.text }}</router-link>
+              <router-link :to="type">{{ type }}</router-link>
             </span>
           </div>
         </div>
@@ -25,8 +25,19 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
-  props: ['articleList']
+  props: ['articles'],
+  computed: {
+    articlesList: function () {
+      let newArticles = []
+      this.articles.forEach((item) => {
+        item.date = moment(item.date).locale('zh-cn').calendar()
+        newArticles.push(item)
+      })
+      return newArticles
+    }
+  }
 }
 </script>
 

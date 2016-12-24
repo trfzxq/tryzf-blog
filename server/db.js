@@ -16,6 +16,14 @@ const articleSchema = new Schema({
   types: Array
 })
 
+const temporaryArticleSchema = new Schema({
+  title: String,
+  date: Date,
+  content: String,
+  author: String,
+  types: Array
+})
+
 const navSchema = new Schema({
   text: String,
   path: String
@@ -36,6 +44,7 @@ const userInfoSchema = new Schema({
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema),
+  TemporaryArticle: mongoose.model('TemporaryArticle', temporaryArticleSchema),
   Nav: mongoose.model('Nav', navSchema),
   SocialContact: mongoose.model('SocialContact', socialContactSchema),
   UserInfo: mongoose.model('UserInfo', userInfoSchema),

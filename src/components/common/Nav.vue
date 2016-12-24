@@ -18,13 +18,16 @@
 export default {
   data () {
     return {
-      navList: [],
       isActive: false
+    }
+  },
+  computed: {
+    navList () {
+      return this.$store.state.navList
     }
   },
   methods: {
     openNav () {
-      this.navList = this.$store.state.navList
       this.isActive = !this.isActive
     },
     closeNav () {

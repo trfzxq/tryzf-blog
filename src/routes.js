@@ -15,8 +15,18 @@ const routes = [
     component: resolve => require(['./components/Login/index'], resolve)
   },
   {
-    path: '/backstage/write',
-    component: resolve => require(['./components/Backstage/Write'], resolve)
+    path: '/backstage/',
+    component: resolve => require(['./components/Backstage/Index'], resolve),
+    children: [
+      {
+        path: 'write',
+        component: resolve => require(['./components/Backstage/Write'], resolve)
+      },
+      {
+        path: 'articleList',
+        component: resolve => require(['./components/Backstage/ArticleList'], resolve)
+      }
+    ]
   },
   {
     path: '*',

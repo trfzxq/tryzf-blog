@@ -7,11 +7,14 @@ Vue.use(Vuex)
 
 const state = {
   loginState: null,
-  articles: null,
-  articleDetaile: null,
-  userInfo: null,
+  articles: [],
+  articlesTotal: 0,
+  currPage: 1,
+  articleDetaile: {},
+  userInfo: [],
   navList: null,
-  socailContact: null
+  socailContact: null,
+  temporaryArticle: null
 }
 
 export default new Vuex.Store({

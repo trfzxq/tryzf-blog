@@ -2,8 +2,8 @@
   <div>
     <headerComponent></headerComponent>
     <minHeader v-once></minHeader>
-    <BodyComponent :articleList="articleList"></BodyComponent>
-    <UserInfo :userInfo="userInfo" :socailContactList="socailContactList"></UserInfo>
+    <BodyComponent :articles="articles"></BodyComponent>
+    <UserInfo :userInfo="userInfo" :socailContact="socailContact"></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
 </template>
@@ -14,17 +14,19 @@ import minHeader from '../common/MinHeader'
 import BodyComponent from './Body'
 import UserInfo from '../common/UserInfo'
 import FooterComponent from '../common/Footer'
-
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      userInfo: [],
-      articleList: [],
-      socailContactList: [],
-      start: 0,
-      sizePage: 10
+      skip: 0,
+      limit: 10
     }
   },
+  computed: mapState({
+    articles: 'articles',
+    userInfo: 'userInfo',
+    socailContact: 'socailContact'
+  }),
   created () {
     this.getArticle()
     this.getUserInfo()
@@ -33,26 +35,13 @@ export default {
   },
   methods: {
     getArticle () {
-      this.$store.dispatch('getArticle', this.start, this.sizePage)
-      .then(() => {
-        let articleList = this.$store.state.articles
-        this.articleList = articleList
-      })
+      this.$store.dispatch('getArticle', { limit: this.limit, skip: this.skip })
     },
     getUserInfo () {
       this.$store.dispatch('getUserInfo')
-      .then(() => {
-        let userInfo = this.$store.state.userInfo
-        this.userInfo = userInfo
-      })
     },
     getSocailContact () {
       this.$store.dispatch('getSocailContact')
-      .then(() => {
-        let socailContactList = this.$store.state.socailContact
-        this.socailContactList = socailContactList
-        console.log(socailContactList)
-      })
     },
     getNavList () {
       this.$store.dispatch('getNavList')

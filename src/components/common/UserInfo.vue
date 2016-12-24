@@ -12,7 +12,7 @@
       </div>
       <div class="col-sm-4">
         <ul class="socail-contact_ul">
-          <li v-for="item in socailContactList" key="item._id">
+          <li v-for="item in socailContact" key="item._id">
             <router-link :to="item.path"><img :src="item.src" v-if="item.isAction"/></router-link>
           </li>
         </ul>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['userInfo', 'socailContactList']
+  props: ['userInfo', 'socailContact']
 }
 </script>
 

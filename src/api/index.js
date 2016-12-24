@@ -1,8 +1,8 @@
 import * as types from './resources'
 
 export default {
-  getArticle: function (limit, sizePage) {
-    return types.GetArticle.get({limit: limit, sizePage: sizePage})
+  getArticle: function (limit, skip) {
+    return types.GetArticle.get({limit: limit, skip: skip})
   },
   getArticleDetaile: function (id) {
     return types.GetArticleDetaile.get({id: id})
@@ -18,5 +18,14 @@ export default {
   },
   getSocailContact: function () {
     return types.GetSocailContact.get()
+  },
+  removeArticle: function (id) {
+    return types.RemoveArticle.delete({id: id})
+  },
+  saveArticle: function (data) {
+    return types.SaveArticle.save(data)
+  },
+  createdArticle: function (data) {
+    return types.CreatedArticle.save(data)
   }
 }
