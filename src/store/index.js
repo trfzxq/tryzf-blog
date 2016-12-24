@@ -8,8 +8,8 @@ Vue.use(Vuex)
 const state = {
   loginState: null,
   articles: [],
-  articlesTotal: 0,
   currPage: 1,
+  articlesTotal: 0,
   articleDetaile: {},
   userInfo: [],
   navList: null,

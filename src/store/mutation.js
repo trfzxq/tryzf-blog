@@ -28,5 +28,9 @@ export default {
   },
   [types.CREATEDARTICLE] (state, data) {
     console.log('创建成功', data)
+  },
+  [types.SETCURRPAGE] (state, currPage) {
+    console.log('#################', currPage)
+    state.currPage = currPage
   }
 }

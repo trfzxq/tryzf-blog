@@ -10,7 +10,6 @@ export default {
     })
   },
   getArticle ({ commit }, options) {
-    console.log(options)
     return api.getArticle(options.limit, options.skip).then(response => {
       commit(types.GETARTICLE, response.data)
     }, response => {
@@ -66,5 +65,8 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  setCurrPage ({ commit }, currPage) {
+    commit(types.SETCURRPAGE, currPage)
   }
 }

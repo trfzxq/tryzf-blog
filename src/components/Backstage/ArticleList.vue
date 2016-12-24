@@ -23,7 +23,7 @@
         </tr>
       </tbody>
     </table>
-    <Pager :limit="limit"></Pager>
+    <Pager :limit="limit" ref="pager"></Pager>
   </div>
 </template>
 
@@ -45,13 +45,10 @@ export default {
         newArticleList.push(item)
       })
       return newArticleList
-    },
-    skip () {
-      return this.$store.state.currPage
     }
   },
   created () {
-    this.getArticleList(this.skip)
+    this.getArticleList(this.$store.state.currPage)
   },
   methods: {
     getArticleList (skip) {
@@ -59,6 +56,11 @@ export default {
     },
     removeArticle (index) {
       this.$store.dispatch('removeArticle', index)
+      if (index === 0) {
+        let skip = this.$store.state.currPage - 1
+        this.getArticleList(skip)
+        this.$refs.pager.prev()
+      }
     },
     updateArticle () {
 

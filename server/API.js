@@ -79,12 +79,11 @@ module.exports = function (app) {
     types = types.split(';')
     let article = {
       title: title,
-      date: new Date(),
+      date: (new Date()).toLocaleString(),
       content: content,
       types: types,
       author: session.username
     }
-    console.log(article, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     db.Article(article).save((err, data) => {
       if (err) {
         res.json({state: 0, msg: err})
@@ -105,7 +104,7 @@ module.exports = function (app) {
     types = types.split(';')
     let article = {
       title: title,
-      date: new Date(),
+      date: (new Date()).toLocaleString(),
       content: content,
       types: types,
       author: session.username
