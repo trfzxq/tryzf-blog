@@ -30,5 +30,14 @@ export default {
   },
   updatePwd: function (data) {
     return types.UpdatePwd.update(data)
+  },
+  updateUserInfo: function (data) {
+    return types.UpdateUserInfo.update(data)
+  },
+  addNav: function (data) {
+    return types.AddNav.save(data)
+  },
+  removeNav: function (id) {
+    return types.RemoveNav.delete({id: id})
   }
 }

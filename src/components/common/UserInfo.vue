@@ -2,11 +2,13 @@
   <div class="user_info_box col-xs-12">
     <div class="col-xs-10 col-xs-offset-1">
       <div class="col-sm-8">
-        <figure class="col-sm-3">
-          <img :src="userInfo.headURL" class="user_head_pic"/>
-        </figure>
+        <router-link to="/backstage/write">
+          <figure class="col-sm-3">
+            <img :src="userInfo.headURL" class="user_head_pic"/>
+          </figure>
+        </router-link>
         <div class="col-sm-8">
-          <h1 class="name">{{ userInfo.username }}</h1>
+          <h1 class="name">{{ userInfo.blogTitle }}</h1>
           <h3 class="motto">{{ userInfo.motto }}</h3>
         </div>
       </div>
@@ -38,7 +40,7 @@ export default {
     border-radius: 50%;
   }
   .name {
-    font-size:50px;
+    font-size:23px;
   }
   .motto {
     font-size:18px;

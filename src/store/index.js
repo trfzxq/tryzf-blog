@@ -6,13 +6,14 @@ import actions from './actions.js'
 Vue.use(Vuex)
 
 const state = {
-  loginState: null,
+  isLogin: null,
   articles: [],
   currPage: 1,
+  token: null,
   articlesTotal: 0,
   articleDetaile: {},
   userInfo: [],
-  navList: null,
+  navList: [],
   socailContact: null,
   temporaryArticle: null
 }

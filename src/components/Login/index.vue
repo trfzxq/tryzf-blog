@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import cookie from 'assets/js/cookie'
 export default {
   data () {
     return {
@@ -49,7 +48,6 @@ export default {
       this.$store.dispatch('login', userInfo).then(() => {
         let result = this.$store.state.loginState
         if (result.state === 1) {
-          cookie.setCookie('token', result.token)
           window.location.href = '/backstage/write'
         } else {
           window.alert(result.msg)

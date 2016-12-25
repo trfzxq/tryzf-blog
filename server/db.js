@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const init = require('./init.json')
-
+const crypto = require('crypto')
 
 const userSchema = new Schema({
   username: String,
@@ -37,6 +37,7 @@ const socialContactSchema = new Schema({
 
 const userInfoSchema = new Schema({
   username: String,
+  blogTitle: String,
   headURL: String,
   motto: String
 })
@@ -57,7 +58,13 @@ const initialize = function () {
       console.log(err)
     } else if (!doc.length) {
       console.log('Database opens for the first time...')
-      Promise.all(init.map(item => new Models[item.type](item).save()))
+      Promise.all(init.map(item => {
+          if (item.type === 'User') {
+            let md5 = crypto.createHash('md5')
+            item.password = md5.update(item.password).digest('hex')
+          }
+          new Models[item.type](item).save()
+      }))
         .then(() => console.log('Initialize successfully.'))
         .catch(() => console.log('Something went wrong during initializing.'))
     } else {

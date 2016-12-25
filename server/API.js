@@ -216,14 +216,73 @@ app.put('/api/updatePwd', (req, res) => {
       if (err) {
         res.json({state: 0, msg: err})
       } else {
-        res.json({state: 1, msg: '更改成功'})
+        let token = createToken(username)
+        res.json({state: 1, msg: '更改成功', token: token})
       }
     })
   },
   err => {
     res.json({state: 0, msg: err})
   });
+});
 
+/* 更改个人信息
+*  @body headURL: 用户头像的地址
+*  @body blogTitle: 博客的名字
+*  @body motto: 座右铭
+*/
+app.put('/api/updateUserInfo', (req, res) => {
+  let { headURL, blogTitle, motto } = req.body
+  let username = session.username
+  let data = {
+    'headURL': headURL,
+    'blogTitle': blogTitle,
+    'motto': motto
+  }
+  if (!username) {
+    res.json({state: 0, msg: '当前用户不存在，请重新登录'});
+    return
+  }
+  db.UserInfo.update({username: username}, {$set: data}, err => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '更新成功', userInfo: data})
+    }
+  })
+});
+
+/* 添加菜单
+* @body path: 跳转路径
+* @body text: 显示的文字
+*/
+app.post('/api/addNav', (req, res) => {
+  let { path, text } = req.body
+  let data = {
+    path: path,
+    text: text
+  }
+  db.Nav(data).save((err, data) => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '添加成功'})
+    }
+  })
+});
+
+/* 删除菜单
+*  @body _id
+*/
+app.delete('/api/removeNav', (req, res) => {
+  let id = req.query.id
+  db.Nav.remove({'_id': id}).exec((err, data) => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '删除成功'})
+    }
+  })
 });
 
 }

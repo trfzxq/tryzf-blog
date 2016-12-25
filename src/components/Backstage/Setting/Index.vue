@@ -1,15 +1,15 @@
 <template lang="html">
   <div>
     <div class="nav">
-      <router-link to="/backstage/setting/pwd">
+      <router-link to="/backstage/setting/pwd" active-class="nav-active">
         <i class="glyphicon glyphicon-lock"></i>
         密码修改
       </router-link>
-      <router-link to="/backstage/setting/userInfo">
+      <router-link to="/backstage/setting/userInfo" active-class="nav-active">
         <i class="glyphicon glyphicon-user"></i>
         用户信息
       </router-link>
-      <router-link to="/backstage/setting/nav">
+      <router-link to="/backstage/setting/nav" active-class="nav-active">
         <i class="glyphicon glyphicon-th-large"></i>
         导航栏
       </router-link>
@@ -19,17 +19,6 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-    }
-  },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
-}
 </script>
 
 <style lang="css" scoped>
@@ -45,11 +34,14 @@ export default {
   font-size:20px;
   text-align: center;
   color:#1d2b35;
-  transition-duration: 1s;
+  transition:all 1s;
 }
-.nav a:hover {
+.nav a:hover, .nav-active{
   background: #27cacc;
   color:#fff;
   text-decoration: none;
+}
+.nav a.nav-active {
+  color:#fff;
 }
 </style>

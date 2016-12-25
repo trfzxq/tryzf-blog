@@ -2,7 +2,7 @@
   <div class="backstage-main">
     <div class="left-module col-sm-2">
       <div class="logo">
-        Backstage
+        欢迎进入博客后台
       </div>
       <ul class="nav_list">
         <li v-for="item in navList" key="item.id">
@@ -16,7 +16,9 @@
     <div class="right-module col-sm-10">
       <div class="right-module_header">
         <div class="pull-left to_greet">
-
+          <router-link to="/" active-class="fire-action">
+            <i class="glyphicon glyphicon-fire go-home" title="返回首页"></i>
+          </router-link>
         </div>
         <div class="pull-right">
           <figure>
@@ -38,10 +40,6 @@
 export default {
   data () {
     return {
-      userInfo: {
-        headURL: 'http://tse1.mm.bing.net/th?&id=OIP.M4343cb2365f84528b061d4a7ec35fd9fo0&w=199&h=162&c=0&pid=1.9&rs=0&p=0&r=0',
-        username: 'zlj'
-      },
       navList: [
         {
           text: '发表博客',
@@ -61,7 +59,11 @@ export default {
       ]
     }
   },
-  computed: {},
+  computed: {
+    userInfo () {
+      return this.$store.state.userInfo
+    }
+  },
   ready () {},
   attached () {},
   methods: {},
@@ -87,7 +89,7 @@ export default {
     line-height: 80px;
     background-color: #27cacc;
     color:#fff;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
   }
   .nav_list li a {
@@ -149,5 +151,12 @@ export default {
   .right-module_main {
     width: 100%;
     padding: 40px;
+  }
+  .go-home{
+    transition:all 1s;
+    background: none;
+  }
+  .go-home:hover {
+    color:red;
   }
 </style>

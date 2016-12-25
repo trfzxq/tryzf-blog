@@ -2,6 +2,10 @@ import * as types from './mutation-type'
 
 export default {
   [types.LOGIN] (state, result) {
+    if (result.state === 1) {
+      console.log(result.token)
+      state.token = result.token
+    }
     state.loginState = result
   },
   [types.GETARTICLE] (state, data) {
@@ -12,6 +16,7 @@ export default {
     state.articleDetaile = data
   },
   [types.GETUSERINFO] (state, userInfo) {
+    console.log(userInfo)
     state.userInfo = userInfo
   },
   [types.GETSOCAILCONTACT] (state, data) {
@@ -30,10 +35,18 @@ export default {
     console.log('创建成功', data)
   },
   [types.SETCURRPAGE] (state, currPage) {
-    console.log('#################', currPage)
     state.currPage = currPage
   },
-  [types.UPDATEPWD] (state, result) {
-    console.log('更改密码', result)
+  [types.UPDATEPWD] (state, token) {
+    state.token = token
+  },
+  [types.UPDATEUSERINFO] (state, userInfo) {
+    state.userInfo = userInfo
+  },
+  [types.ADDNAV] (state, navList) {
+    state.navList.push(navList)
+  },
+  [types.REMOVENAV] (state, index) {
+    state.navList.splice(index, 1)
   }
 }

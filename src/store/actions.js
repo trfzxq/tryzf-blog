@@ -75,5 +75,27 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  updateUserInfo ({ commit }, data) {
+    return api.updateUserInfo(data).then(response => {
+      commit(types.UPDATEUSERINFO, response.data.userInfo)
+    }, response => {
+      console.log(response)
+    })
+  },
+  addNav ({ commit }, data) {
+    return api.addNav(data).then(response => {
+      commit(types.ADDNAV, data)
+    }, response => {
+      console.log(response)
+    })
+  },
+  removeNav ({ commit, state }, index) {
+    let id = [...state.navList][index]._id
+    return api.removeNav(id).then(response => {
+      commit(types.REMOVENAV, index)
+    }, response => {
+      console.log(response)
+    })
   }
 }

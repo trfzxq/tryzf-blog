@@ -1,20 +1,19 @@
 <template lang="html">
   <form clsas="form">
-    <div class="from-group mrgB10">
-      <figure>
-        <img src="http://tse1.mm.bing.net/th?&id=OIP.M4343cb2365f84528b061d4a7ec35fd9fo0&w=199&h=162&c=0&pid=1.9&rs=0&p=0&r=0"/>
-      </figure>
+    <div clsas="form-group">
+      <label>头像的链接</label>
+      <input class="form-control mrgB10" type="text" v-model="userInfo.headURL"/>
     </div>
     <div clsas="form-group">
       <label>博客名</label>
-      <input class="form-control mrgB10" type="text"/>
+      <input class="form-control mrgB10" type="text" v-model="userInfo.blogTitle"/>
     </div>
     <div class="form-group">
-      <label>座右铭</label>
-      <textarea class="form-control mrgB10"></textarea>
+      <label>一句介绍自己的话</label>
+      <textarea class="form-control mrgB10" v-model="userInfo.motto"></textarea>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-primary">保存</button>
+      <button type="button" class="btn btn-primary" @click="save">保存</button>
     </div>
   </form>
 </template>
@@ -25,10 +24,37 @@ export default {
     return {
     }
   },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
+  computed: {
+    userInfo () {
+      return this.$store.state.userInfo
+    }
+  },
+  created () {
+    if (!this.userInfo.headURL) {
+      this.getUserInfo()
+    }
+  },
+  methods: {
+    save () {
+      if (!this.userInfo.blogTitle) {
+        window.alert('博客名可不能为空哦！')
+      } else if (!this.userInfo.motto) {
+        window.alert('没有一句介绍自己的话可不好')
+      } else if (!this.userInfo.headURL) {
+        window.alert('真调皮！头像的地址都不写')
+      } else {
+        let data = {
+          blogTitle: this.userInfo.blogTitle,
+          headURL: this.userInfo.headURL,
+          motto: this.userInfo.motto
+        }
+        this.$store.dispatch('updateUserInfo', data)
+      }
+    },
+    getUserInfo () {
+      this.$store.dispatch('getUserInfo')
+    }
+  },
   components: {}
 }
 </script>

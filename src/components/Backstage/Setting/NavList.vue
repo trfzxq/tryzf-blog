@@ -3,37 +3,37 @@
     <form class="form-inline">
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon"><i class="glyphicon glyphicon-road"></i></div>
-          <input class="form-control input-lg" type="text" placeholder="path"/>
+          <div class="input-group-addon">
+            <i class="glyphicon glyphicon-flag"></i>
+          </div>
+          <input class="form-control input-lg" type="text" placeholder="text" v-model="navList.text"/>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon">
-            <i class="glyphicon glyphicon-flag"></i>
-          </div>
-          <input class="form-control input-lg" type="text" placeholder="text"/>
+          <div class="input-group-addon"><i class="glyphicon glyphicon-road"></i></div>
+          <input class="form-control input-lg" type="text" placeholder="path" v-model="navList.path"/>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-lg">添加</button>
+        <button class="btn btn-primary btn-lg" type="button" @click="addNav">添加</button>
       </div>
     </form>
     <div class="table-responsive mrgT30">
       <table class="table table-hover table-striped">
         <thead>
           <tr>
-            <th>路径</th>
             <th>名称</th>
+            <th>路径</th>
             <th>编辑</th>
           </tr>
         </thead>
         <tbody class="table-striped">
-          <tr>
-            <td>"/path"</td>
-            <td>首页</td>
+          <tr v-for="(item, index) in navList">
+            <td>{{ item.text }}</td>
+            <td>{{ item.path }}</td>
             <td>
-              <button class="btn btn-danger">删除</button>
+              <button class="btn btn-danger" @click="removeNav(index)">删除</button>
             </td>
           </tr>
         </tbody>
@@ -47,10 +47,39 @@ export default {
     return {
     }
   },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
+  computed: {
+    navList () {
+      return this.$store.state.navList
+    }
+  },
+  created () {
+    if (!this.navList.length) {
+      console.log('@@@@@@@@@@@@@@@', this.navList)
+      this.getNavList()
+    }
+  },
+  methods: {
+    removeNav (index) {
+      this.$store.dispatch('removeNav', index)
+    },
+    addNav () {
+      if (!this.navList.path) {
+        window.alert('请填写路径')
+      } else if (!this.navList.text) {
+        window.alert('请填写名称')
+      } else {
+        let data = {
+          path: this.navList.path,
+          text: this.navList.text
+        }
+        this.$store.dispatch('addNav', data)
+      }
+    },
+    getNavList () {
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+      this.$store.dispatch('getNavList')
+    }
+  },
   components: {}
 }
 </script>
