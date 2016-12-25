@@ -41,6 +41,7 @@ export default {
   }
   .name {
     font-size:23px;
+    margin-bottom: 10px;
   }
   .motto {
     font-size:18px;

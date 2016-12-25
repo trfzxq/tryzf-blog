@@ -13,6 +13,10 @@
         <i class="glyphicon glyphicon-th-large"></i>
         导航栏
       </router-link>
+      <router-link to="/backstage/setting/socailContact" active-class="nav-active">
+        <i class="glyphicon glyphicon-glass"></i>
+        社交管理
+      </router-link>
     </div>
     <router-view></router-view>
   </div>
@@ -28,7 +32,7 @@
   margin-bottom: 30px;
 }
 .nav a {
-  width: 33%;
+  width: 24%;
   display: inline-block;
   padding:20px 0;
   font-size:20px;

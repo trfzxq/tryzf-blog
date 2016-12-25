@@ -19,6 +19,12 @@ export default {
     console.log(userInfo)
     state.userInfo = userInfo
   },
+  [types.SAVESOCAILCONTACT] (state, data) {
+    state.socailContact.push(data)
+  },
+  [types.REMOVESOCAILCONTACT] (state, index) {
+    state.socailContact.splice(index, 1)
+  },
   [types.GETSOCAILCONTACT] (state, data) {
     state.socailContact = data
   },

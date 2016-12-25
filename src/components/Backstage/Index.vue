@@ -17,8 +17,9 @@
       <div class="right-module_header">
         <div class="pull-left to_greet">
           <router-link to="/" active-class="fire-action">
-            <i class="glyphicon glyphicon-fire go-home" title="返回首页"></i>
+            <i class="glyphicon glyphicon-home go-home" title="返回首页"></i>
           </router-link>
+          <i class="glyphicon glyphicon-off mrgL30"></i>
         </div>
         <div class="pull-right">
           <figure>
@@ -158,5 +159,8 @@ export default {
   }
   .go-home:hover {
     color:red;
+  }
+  .mrgL30 {
+    margin-left: 30px;
   }
 </style>

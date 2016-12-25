@@ -16,6 +16,12 @@ export default {
   getNavList: function () {
     return types.GetNavList.get()
   },
+  saveSocailContact: function (data) {
+    return types.SaveSocailContact.save(data)
+  },
+  removeSocailContact: function (id) {
+    return types.RemoveSocailContact.delete({id: id})
+  },
   getSocailContact: function () {
     return types.GetSocailContact.get()
   },

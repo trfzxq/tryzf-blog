@@ -175,6 +175,41 @@ module.exports = function (app) {
     })
   });
 
+/* 添加社交帐号信息
+*  @body src: 图标的src
+*  @body path: 社交链接
+* @body  isAction: 显示
+*/
+app.post('/api/saveSocialContact', (req, res) => {
+  let {src, path, isAction} = req.body
+  let data = {
+    src: src,
+    path: path,
+    isAction: isAction
+  }
+  db.SocialContact(data).save((err, data) => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '添加成功'})
+    }
+  })
+});
+
+/* 删除社交图标
+*
+*/
+app.delete('/api/removeSocailContact', (req, res) => {
+  let id = req.query.id
+  db.SocialContact.remove({'_id': id}).exec((err, data) => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '删除成功'})
+    }
+  })
+})
+
   /*
   * 获取导航菜单
   */

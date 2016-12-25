@@ -30,6 +30,21 @@ export default {
       console.log(response)
     })
   },
+  saveSocailContact ({ commit }, data) {
+    return api.saveSocailContact(data).then(response => {
+      commit(types.SAVESOCAILCONTACT, data)
+    }, response => {
+      console.log(response)
+    })
+  },
+  removeSocailContact ({ commit, state }, index) {
+    let id = [...state.socailContact][index]._id
+    return api.removeSocailContact(id).then(response => {
+      commit(types.REMOVESOCAILCONTACT, index)
+    }, response => {
+      console.log(response)
+    })
+  },
   getSocailContact ({ commit }) {
     return api.getSocailContact().then(response => {
       commit(types.GETSOCAILCONTACT, response.data.socialContact)

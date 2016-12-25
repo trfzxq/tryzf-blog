@@ -10,6 +10,8 @@ export const GetArticle = Vue.resource('/api/getArticle?limit={limit}&skip={skip
 export const GetArticleDetaile = Vue.resource('/api/getArticleDetaile/{id}')
 export const GetUserInfo = Vue.resource('/api/getUserInfo')
 export const GetNavList = Vue.resource('/api/getNavList')
+export const SaveSocailContact = Vue.resource('/api/saveSocialContact')
+export const RemoveSocailContact = Vue.resource('/api/removeSocailContact')
 export const GetSocailContact = Vue.resource('/api/getSocialContact')
 export const RemoveArticle = Vue.resource('/api/removeArticle')
 export const CreatedArticle = Vue.resource('/api/createdArticle')

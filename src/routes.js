@@ -42,6 +42,10 @@ const routes = [
           {
             path: 'userInfo',
             component: require('./components/Backstage/Setting/UserInfo')
+          },
+          {
+            path: 'socailContact',
+            component: require('./components/Backstage/Setting/SocailContact')
           }
         ]
       }

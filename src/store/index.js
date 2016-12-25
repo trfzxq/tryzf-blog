@@ -14,7 +14,7 @@ const state = {
   articleDetaile: {},
   userInfo: [],
   navList: [],
-  socailContact: null,
+  socailContact: [],
   temporaryArticle: null
 }
 
