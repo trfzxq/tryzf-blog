@@ -22,8 +22,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const accessToken = store.state.token || true
-  console.log(store.state.token, '############################')
+  const accessToken = window.sessionStorage.getItem('token')
   const allowArray = ['home', 'article', 'login']
   let isBreak = 0
   allowArray.forEach((item) => {
@@ -31,6 +30,7 @@ router.beforeEach((to, from, next) => {
       isBreak += 1
     }
   })
+  console.log(accessToken, 'This is token')
   if (isBreak || accessToken) {
     next()
   } else {

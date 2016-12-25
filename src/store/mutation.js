@@ -3,8 +3,7 @@ import * as types from './mutation-type'
 export default {
   [types.LOGIN] (state, result) {
     if (result.state === 1) {
-      console.log(result.token)
-      state.token = result.token
+      window.sessionStorage.setItem('token', result.token)
     }
     state.loginState = result
   },
