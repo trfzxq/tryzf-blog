@@ -1,0 +1,55 @@
+<template lang="html">
+  <div>
+    <div class="nav">
+      <router-link to="/backstage/setting/pwd">
+        <i class="glyphicon glyphicon-lock"></i>
+        密码修改
+      </router-link>
+      <router-link to="/backstage/setting/userInfo">
+        <i class="glyphicon glyphicon-user"></i>
+        用户信息
+      </router-link>
+      <router-link to="/backstage/setting/nav">
+        <i class="glyphicon glyphicon-th-large"></i>
+        导航栏
+      </router-link>
+    </div>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+    }
+  },
+  computed: {},
+  ready () {},
+  attached () {},
+  methods: {},
+  components: {}
+}
+</script>
+
+<style lang="css" scoped>
+.nav {
+  border-top:1px dashed #eef3f7;
+  border-bottom:1px dashed #eef3f7;
+  margin-bottom: 30px;
+}
+.nav a {
+  width: 33%;
+  display: inline-block;
+  padding:20px 0;
+  font-size:20px;
+  text-align: center;
+  color:#1d2b35;
+  transition-duration: 1s;
+}
+.nav a:hover {
+  background: #27cacc;
+  color:#fff;
+  text-decoration: none;
+}
+</style>

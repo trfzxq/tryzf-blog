@@ -34,7 +34,7 @@ import moment from 'moment'
 export default {
   data () {
     return {
-      limit: 1
+      limit: 10
     }
   },
   computed: {

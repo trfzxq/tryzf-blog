@@ -1,5 +1,7 @@
 const db = require('./db.js');
 const uuid = require('node-uuid')
+const crypto = require('crypto')
+
 const session = {
   token: null,
   username: null
@@ -10,8 +12,9 @@ module.exports = function (app) {
   *  @body password
   */
   app.post('/api/login', (req, res) => {
-    const {username, password} = req.body
-    db.User.findOne({ username }, 'password', (err, doc) => {
+    let {username, password} = req.body
+    password = createdMd5Pwd(password)
+    db.User.findOne({ username }, (err, doc) => {
       switch (true) {
         case !!err:
           console.log(err)
@@ -184,6 +187,45 @@ module.exports = function (app) {
       }
     })
   });
+
+/* 修改密码
+*
+*/
+app.put('/api/updatePwd', (req, res) => {
+  let username = session.username || 'zlj'
+  let oldPwd = createdMd5Pwd(req.body.oldPwd)
+  let newPwd = createdMd5Pwd(req.body.newPwd)
+  db.User.findOne({username: username}, (err, user) => {
+    new Promise((resolve, reject) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(user)
+      }
+    })
+  }).then(user => {
+    if (oldPwd !== user.password) {
+      res.json({state: 0, msg: '原密码不正确'})
+      return
+    } else if (newPwd === user.password) {
+      res.json({state: 0, msg: '新密码和原密码不能相同'})
+      return
+    }
+    //进行密码更新
+    db.User.update({'username': username}, {$set: {'password': newPwd}}, (err) => {
+      if (err) {
+        res.json({state: 0, msg: err})
+      } else {
+        res.json({state: 1, msg: '更改成功'})
+      }
+    })
+  },
+  err => {
+    res.json({state: 0, msg: err})
+  });
+
+});
+
 }
 
 /*
@@ -194,4 +236,11 @@ function createToken (username) {
   session.token = token
   session.username = username
   return token
+}
+/* md5 加密
+*
+*/
+function createdMd5Pwd (password) {
+  let md5 = crypto.createHash('md5')
+  return md5.update(password).digest('hex')
 }

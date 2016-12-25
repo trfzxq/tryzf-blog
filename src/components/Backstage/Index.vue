@@ -52,6 +52,11 @@ export default {
           text: '所有文章',
           path: '/backstage/articleList',
           icon: 'glyphicon glyphicon-list'
+        },
+        {
+          text: '设置',
+          path: '/backstage/setting',
+          icon: 'glyphicon glyphicon-cog'
         }
       ]
     }

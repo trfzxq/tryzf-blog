@@ -27,5 +27,8 @@ export default {
   },
   createdArticle: function (data) {
     return types.CreatedArticle.save(data)
+  },
+  updatePwd: function (data) {
+    return types.UpdatePwd.update(data)
   }
 }

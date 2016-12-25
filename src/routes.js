@@ -25,6 +25,25 @@ const routes = [
       {
         path: 'articleList',
         component: resolve => require(['./components/Backstage/ArticleList'], resolve)
+      },
+      {
+        path: 'setting',
+        component: resolve => require(['./components/Backstage/Setting/Index'], resolve),
+        redirect: '/backstage/setting/pwd',
+        children: [
+          {
+            path: 'pwd',
+            component: require('./components/Backstage/Setting/Pwd')
+          },
+          {
+            path: 'nav',
+            component: require('./components/Backstage/Setting/NavList')
+          },
+          {
+            path: 'userInfo',
+            component: require('./components/Backstage/Setting/UserInfo')
+          }
+        ]
       }
     ]
   },

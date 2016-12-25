@@ -32,5 +32,8 @@ export default {
   [types.SETCURRPAGE] (state, currPage) {
     console.log('#################', currPage)
     state.currPage = currPage
+  },
+  [types.UPDATEPWD] (state, result) {
+    console.log('更改密码', result)
   }
 }

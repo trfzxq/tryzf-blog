@@ -68,5 +68,12 @@ export default {
   },
   setCurrPage ({ commit }, currPage) {
     commit(types.SETCURRPAGE, currPage)
+  },
+  updatePwd ({ commit }, data) {
+    return api.updatePwd(data).then(response => {
+      commit(types.UPDATEPWD, response)
+    }, response => {
+      console.log(response)
+    })
   }
 }
