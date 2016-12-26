@@ -22,7 +22,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const accessToken = window.sessionStorage.getItem('token')
   let auth = to.matched[0].meta.requiresAuth
-  console.log(accessToken, '@@@@@@@@@@@@@@@@@@@')
   if (auth) {
     if (!accessToken) {
       next({

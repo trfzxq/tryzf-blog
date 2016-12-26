@@ -50,9 +50,6 @@ export default {
         }
         this.$store.dispatch('updateUserInfo', data)
       }
-    },
-    getUserInfo () {
-      this.$store.dispatch('getUserInfo')
     }
   },
   components: {}

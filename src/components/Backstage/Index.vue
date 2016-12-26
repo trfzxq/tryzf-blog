@@ -24,7 +24,7 @@
         <div class="pull-right">
           <figure>
             <figcaption>
-              上午好，{{ userInfo.username }} ~
+              {{ getTime }}好，{{ userInfo.username }} ~
             </figcaption>
             <img :src="userInfo.headURL"/>
           </figure>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
   data () {
     return {
@@ -63,11 +64,20 @@ export default {
   computed: {
     userInfo () {
       return this.$store.state.userInfo
+    },
+    getTime () {
+      return moment().locale('zh-cn').format('a')
     }
+  },
+  created () {
+    this.getUserInfo()
   },
   methods: {
     signOut () {
       this.$store.dispatch('signout')
+    },
+    getUserInfo () {
+      this.$store.dispatch('getUserInfo')
     }
   }
 }

@@ -17,6 +17,7 @@ const routes = [
   {
     path: '/backstage/',
     meta: { 'requiresAuth': true },
+    redirect: '/backstage/write',
     component: resolve => require(['./components/Backstage/Index'], resolve),
     children: [
       {

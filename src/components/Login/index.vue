@@ -48,7 +48,7 @@ export default {
       this.$store.dispatch('login', userInfo).then(() => {
         let result = this.$store.state.loginState
         if (result.state === 1) {
-          window.location.href = '/backstage/write'
+          window.location.href = '/backstage'
         } else {
           window.alert(result.msg)
         }
