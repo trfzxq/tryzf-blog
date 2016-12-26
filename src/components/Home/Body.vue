@@ -63,7 +63,6 @@ export default {
     color:#7f8c8d;
     line-height: 1.9;
     font-size:16px;
-    text-indent: 2rem;
   }
   .article-info {
     border-top:1px dashed #eee;
