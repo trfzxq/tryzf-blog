@@ -1,4 +1,5 @@
 export const LOGIN = 'LOGIN'
+export const SIGNOUT = 'SIGNOUT'
 export const GETARTICLE = 'GETARTICLE'
 export const GETARTICLEDETAILE = 'GETARTICLEDETAILE'
 export const GETNAVLIST = 'GETNAVLIST'

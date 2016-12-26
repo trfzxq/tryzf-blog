@@ -8,7 +8,10 @@ export default {
     return types.GetArticleDetaile.get({id: id})
   },
   localLogin: function (data) {
-    return types.Login.save({id: 'local'}, data)
+    return types.Login.save(data)
+  },
+  signout: function (data) {
+    return types.Signout.get()
   },
   getUserInfo: function () {
     return types.GetUserInfo.get()

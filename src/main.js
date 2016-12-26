@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import App from './components/App.vue'
 import store from './store/index'
@@ -11,7 +10,6 @@ import './assets/styles/index.css'
 import { infiniteScroll } from 'vue-infinite-scroll'
 
 Vue.use(VueRouter)
-Vue.use(VueResource)
 
 const router = new VueRouter({
   mode: 'history',
@@ -23,18 +21,18 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const accessToken = window.sessionStorage.getItem('token')
-  const allowArray = ['home', 'article', 'login']
-  let isBreak = 0
-  allowArray.forEach((item) => {
-    if (to.name === item) {
-      isBreak += 1
+  let auth = to.matched[0].meta.requiresAuth
+  console.log(accessToken, '@@@@@@@@@@@@@@@@@@@')
+  if (auth) {
+    if (!accessToken) {
+      next({
+        path: '/login'
+      })
+    } else {
+      next()
     }
-  })
-  console.log(accessToken, 'This is token')
-  if (isBreak || accessToken) {
-    next()
   } else {
-    next('/login')
+    next()
   }
 })
 

@@ -19,7 +19,7 @@
           <router-link to="/" active-class="fire-action">
             <i class="glyphicon glyphicon-home go-home" title="返回首页"></i>
           </router-link>
-          <i class="glyphicon glyphicon-off mrgL30"></i>
+          <i class="glyphicon glyphicon-off mrgL30" @click="signOut"></i>
         </div>
         <div class="pull-right">
           <figure>
@@ -65,10 +65,11 @@ export default {
       return this.$store.state.userInfo
     }
   },
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
+  methods: {
+    signOut () {
+      this.$store.dispatch('signout')
+    }
+  }
 }
 </script>
 

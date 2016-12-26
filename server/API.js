@@ -7,6 +7,10 @@ const session = {
   username: null
 }
 module.exports = function (app) {
+
+  app.post('/api/*', checkLogin)
+  app.delete('/api/*', checkLogin)
+  app.put('/api/*', checkLogin)
   /* 登录
   *  @body username
   *  @body password
@@ -34,6 +38,14 @@ module.exports = function (app) {
       }
     })
   });
+
+  /*  signout
+  *
+  */
+  app.get('/api/signout', (req, res) => {
+    signout();
+    res.json({state: 1, msg: '已登出'})
+  })
 
   /* 获取文件列表
   *  @param limit 一页显示几条数据
@@ -331,10 +343,25 @@ function createToken (username) {
   session.username = username
   return token
 }
+//登出
+function signout () {
+  session.token = null;
+}
+
 /* md5 加密
 *
 */
 function createdMd5Pwd (password) {
   let md5 = crypto.createHash('md5')
   return md5.update(password).digest('hex')
+}
+//验证是否存在token，不存在则登录
+function checkLogin(req, res, next) {
+  let token = req.headers.authorization
+  let url = req.url;
+  if (session.token === token || url === '/api/login') {
+    next()
+  } else {
+    res.status(403).send('您没有权限访问！');
+  }
 }

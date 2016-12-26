@@ -5,7 +5,23 @@ Vue.use(VueResource)
 Vue.http.options.crossOrigin = true
 Vue.http.options.credentials = true
 
+Vue.http.interceptors.push((request, next) => {
+  request.headers = request.headers || {}
+  let token = window.sessionStorage.getItem('token')
+  if (token) {
+    request.headers.set('Authorization', token)
+  }
+  next((response) => {
+    if (response.status === 403) {
+      window.sessionStorage.removeItem('token')
+      window.location.pathname = '/login'
+    }
+    return response
+  })
+})
+
 export const Login = Vue.resource('/api/login')
+export const Signout = Vue.resource('/api/signout')
 export const GetArticle = Vue.resource('/api/getArticle?limit={limit}&skip={skip}')
 export const GetArticleDetaile = Vue.resource('/api/getArticleDetaile/{id}')
 export const GetUserInfo = Vue.resource('/api/getUserInfo')

@@ -9,6 +9,13 @@ export default {
       console.log('This is login error at actions:', response)
     })
   },
+  signout ({ commit }) {
+    return api.signout().then(response => {
+      commit(types.SIGNOUT)
+    }, response => {
+      console.log(response)
+    })
+  },
   getArticle ({ commit }, options) {
     return api.getArticle(options.limit, options.skip).then(response => {
       commit(types.GETARTICLE, response.data)

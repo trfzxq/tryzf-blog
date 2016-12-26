@@ -7,6 +7,10 @@ export default {
     }
     state.loginState = result
   },
+  [types.SIGNOUT] (state) {
+    window.sessionStorage.removeItem('token')
+    window.location.pathname = '/'
+  },
   [types.GETARTICLE] (state, data) {
     state.articles = data.articles
     state.articlesTotal = data.total
@@ -15,7 +19,6 @@ export default {
     state.articleDetaile = data
   },
   [types.GETUSERINFO] (state, userInfo) {
-    console.log(userInfo)
     state.userInfo = userInfo
   },
   [types.SAVESOCAILCONTACT] (state, data) {
