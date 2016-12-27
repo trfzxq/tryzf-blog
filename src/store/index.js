@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const state = {
   articles: [],
   currPage: 1,
+  currUpdateArticle: {},
   articlesTotal: 0,
   articleDetaile: {},
   userInfo: [],

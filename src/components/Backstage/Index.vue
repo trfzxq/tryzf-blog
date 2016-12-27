@@ -74,7 +74,9 @@ export default {
   },
   methods: {
     signOut () {
-      this.$store.dispatch('signout')
+      this.$store.dispatch('signout').then(() => {
+        this.$router.push({path: '/'})
+      })
     },
     getUserInfo () {
       this.$store.dispatch('getUserInfo')

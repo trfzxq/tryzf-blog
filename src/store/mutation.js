@@ -9,7 +9,6 @@ export default {
   },
   [types.SIGNOUT] (state) {
     window.sessionStorage.removeItem('token')
-    window.location.pathname = '/'
   },
   [types.GETARTICLE] (state, data) {
     state.articles = data.articles
@@ -56,5 +55,8 @@ export default {
   },
   [types.REMOVENAV] (state, index) {
     state.navList.splice(index, 1)
+  },
+  [types.SAVEUPDATEARTICLE] (state, index) {
+    state.updateArticle = state.articles[index]
   }
 }

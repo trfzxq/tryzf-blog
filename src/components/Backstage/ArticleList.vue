@@ -17,7 +17,7 @@
           </td>
           <td>{{ item.date }}</td>
           <td>
-            <button class="btn btn-primary" @click="removeArticle(index)">更改</button>
+            <button class="btn btn-primary" @click="updateArticle(index)">更改</button>
             <button class="btn btn-danger" @click="removeArticle(index)">删除</button>
           </td>
         </tr>
@@ -62,8 +62,9 @@ export default {
         this.$refs.pager.prev()
       }
     },
-    updateArticle () {
-
+    updateArticle (index) {
+      this.$store.dispatch('saveUpdateArticle', index)
+      this.$router.push({path: '/backstage/write'})
     }
   },
   components: {

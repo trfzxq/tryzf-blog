@@ -81,6 +81,9 @@ export default {
       console.log(response)
     })
   },
+  saveUpdateArticle ({ commit }, index) {
+    commit(types.SAVEUPDATEARTICLE, index)
+  },
   createdArticle ({ commit }, article) {
     return api.createdArticle(article).then(response => {
       commit(types.CREATEDARTICLE, article)
