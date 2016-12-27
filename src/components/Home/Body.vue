@@ -32,7 +32,7 @@ export default {
     articlesList: function () {
       let newArticles = []
       this.articles.forEach((item) => {
-        item.date = moment(item.date).locale('zh-cn').calendar()
+        item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
         newArticles.push(item)
       })
       return newArticles

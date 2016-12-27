@@ -41,7 +41,7 @@ export default {
     articleList () {
       let newArticleList = []
       this.$store.state.articles.forEach((item) => {
-        item.date = moment(item.date).locale('zh-cn').calendar()
+        item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
         newArticleList.push(item)
       })
       return newArticleList
