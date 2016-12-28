@@ -5,16 +5,26 @@ import actions from './actions.js'
 
 Vue.use(Vuex)
 
+const modal = {
+  show: false,
+  type: 'info',
+  message: '模拟提示',
+  ok: () => {},
+  cancel: () => {}
+}
+
 const state = {
   articles: [],
   currPage: 1,
   currUpdateArticle: {},
+  isUpdateArticle: false,
   articlesTotal: 0,
   articleDetaile: {},
   userInfo: [],
   navList: [],
   socailContact: [],
-  temporaryArticle: null
+  temporaryArticle: null,
+  modal: modal
 }
 
 export default new Vuex.Store({

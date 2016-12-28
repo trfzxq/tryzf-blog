@@ -58,5 +58,20 @@ export default {
   },
   [types.SAVEUPDATEARTICLE] (state, index) {
     state.updateArticle = state.articles[index]
+    state.isUpdateArticle = true
+  },
+  [types.UPDATEARTICLE] (state, data) {
+    console.log('更新数组')
+  },
+
+  [types.SHOW_MODAL] (state, data) {
+    state.modal.show = true
+    state.modal.type = data.type
+    state.modal.message = data.message
+    state.modal.ok = data.ok
+    state.modal.cancel = data.cancel
+  },
+  [types.CLOSE_MODAL] (state) {
+    state.modal.show = false
   }
 }

@@ -15,7 +15,8 @@
     <div class="form-group">
       <button type="button" name="button" class="btn btn-danger" @click="clear">清空</button>
       <button type="button" name="button" class="btn btn-primary" @click="save">保存</button>
-      <button type="button" name="button" class="btn btn-success" @click="add">发布</button>
+      <button v-if="!isUpdateArticle" type="button" name="button" class="btn btn-success" @click="add">发布</button>
+      <button v-if="isUpdateArticle" type="button" class="btn btn-success" @click="update">更改</button>
     </div>
   </form>
 </template>
@@ -28,8 +29,11 @@ export default {
     }
   },
   computed: {
-    tempArticle: function () {
+    tempArticle () {
       return this.$store.state.updateArticle || this.$store.state.temporaryArticle || {}
+    },
+    isUpdateArticle () {
+      return this.$store.state.isUpdateArticle
     }
   },
   methods: {
@@ -43,6 +47,11 @@ export default {
     },
     clear () {
       this.temporaryArticle = {}
+    },
+    update () {
+      let data = this.tempArticle
+      console.log(data)
+      this.$store.dispatch('updateArticle', data)
     }
   }
 }

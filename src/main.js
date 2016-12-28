@@ -6,10 +6,13 @@ import App from './components/App.vue'
 import store from './store/index'
 import routes from './routes.js'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'animate.css'
 import './assets/styles/index.css'
 import { infiniteScroll } from 'vue-infinite-scroll'
-
+import Modal from './components/common/modal/UiModal'
 Vue.use(VueRouter)
+
+Vue.component('ui-modal', Modal)
 
 const router = new VueRouter({
   mode: 'history',

@@ -108,6 +108,26 @@ module.exports = function (app) {
     })
   });
 
+  /* 更改文章
+  *
+  */
+  app.put('/api/updateArticle', (req, res) => {
+    let { title, content, types, id } = req.body
+    let data = {
+      title: title,
+      content: content,
+      types: types.split(';')
+    }
+    db.Article.update({'_id': id}, {$set: data}, err => {
+      if (err) {
+        res.json({state: 0, msg: err})
+      } else {
+        res.json({state: 1, msg: '更改成功'})
+      }
+    })
+  })
+
+
   /*草稿箱
   * @body title: 文章标题
   * @body date: 创建文章时间

@@ -3,6 +3,7 @@
     <transition>
       <router-view></router-view>
     </transition>
+    <ui-modal></ui-modal>
   </div>
 </template>
 

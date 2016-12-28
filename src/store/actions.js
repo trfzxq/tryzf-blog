@@ -81,6 +81,13 @@ export default {
       console.log(response)
     })
   },
+  updateArticle ({ commit }, data) {
+    return api.updateArticle(data).then(response => {
+      commit(types.UPDATEARTICLE, data)
+    }, response => {
+      console.log(response)
+    })
+  },
   saveUpdateArticle ({ commit }, index) {
     commit(types.SAVEUPDATEARTICLE, index)
   },
@@ -122,5 +129,11 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  showModal ({ commit }, data) {
+    commit(types.SHOW_MODAL, data)
+  },
+  closeModal ({ commit }) {
+    commit(types.CLOSE_MODAL)
   }
 }

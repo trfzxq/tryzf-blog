@@ -34,6 +34,9 @@ export default {
   saveArticle: function (data) {
     return types.SaveArticle.save(data)
   },
+  updateArticle: function (data) {
+    return types.UpdateArticle.update(data)
+  },
   createdArticle: function (data) {
     return types.CreatedArticle.save(data)
   },
