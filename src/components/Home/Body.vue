@@ -4,7 +4,7 @@
       <li v-for="item in articlesList" :key="item.id">
         <router-link :to="'/article/' + item._id" class="title">{{ item.title }}</router-link>
         <time class="time">{{ item.date }}</time>
-        <article class="abstract" @click="openModal">
+        <article class="abstract">
           {{ item.content }}
         </article>
         <div class="article-info clearfix">
@@ -36,20 +36,6 @@ export default {
         newArticles.push(item)
       })
       return newArticles
-    }
-  },
-  methods: {
-    openModal () {
-      this.$store.dispatch('showModal', {
-        type: 'error',
-        message: '测试数据',
-        ok: function () {
-          console.log('你动的')
-        },
-        cancel: function () {
-          console.log('取消')
-        }
-      })
     }
   }
 }

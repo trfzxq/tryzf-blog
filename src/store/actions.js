@@ -1,6 +1,10 @@
 import * as types from './mutation-type.js'
 import api from 'api/index.js'
 
+const showModal = (commit, data) => {
+  commit(types.SHOW_MODAL, data)
+}
+
 export default {
   login ({ commit }, userInfo) {
     return api.localLogin(userInfo).then(response => {
@@ -75,6 +79,12 @@ export default {
     })
   },
   saveArticle ({ commit }, article) {
+    if (!article.title) {
+      showModal(commit, {
+        message: '标题不能为空'
+      })
+      return
+    }
     return api.saveArticle(article).then(response => {
       commit(types.SAVEARTICLE, article)
     }, response => {

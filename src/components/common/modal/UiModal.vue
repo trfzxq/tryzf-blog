@@ -56,11 +56,15 @@ export default {
     },
     ok () {
       this.close()
-      this.$store.state.modal.ok()
+      if (typeof this.$store.state.modal.ok === 'function') {
+        this.$store.state.modal.ok()
+      }
     },
     cancel () {
       this.close()
-      this.$store.state.modal.cancel()
+      if (typeof this.$store.state.modal.cancel === 'function') {
+        this.$store.state.modal.cancel()
+      }
     }
   },
   components: {

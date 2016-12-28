@@ -38,7 +38,10 @@ export default {
   methods: {
     submitLogin () {
       if (!this.username || !this.password) {
-        window.alert('帐号或密码不能为空！')
+        this.$store.dispatch('showModal', {
+          message: '帐号或密码不能为空！',
+          type: 'error'
+        })
         return
       }
       let userInfo = {
@@ -50,7 +53,10 @@ export default {
         if (result.state === 1) {
           window.location.href = '/backstage'
         } else {
-          window.alert(result.msg)
+          this.$store.dispatch('showModal', {
+            message: result.msg,
+            type: 'error'
+          })
         }
       })
     }
