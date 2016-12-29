@@ -73,5 +73,8 @@ export default {
   },
   [types.CLOSE_MODAL] (state) {
     state.modal.show = false
+  },
+  [types.SEARCH] (state, articles) {
+    state.articles = articles
   }
 }

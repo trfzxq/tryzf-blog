@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="search-box">
-    <input placeholder="搜索" :class="{active: isActive}"/>
+    <input placeholder="搜索" :class="{active: isActive}" @change="search" @key.enter="search" v-modal="key"/>
     <i class="glyphicon glyphicon-search search-icon" @click="openSearch"></i>
   </div>
 </template>
@@ -9,13 +9,14 @@
 export default {
   data () {
     return {
-      isActive: false
+      isActive: false,
+      key: null
     }
   },
-  computed: {},
-  ready () {},
-  attached () {},
   methods: {
+    search () {
+      this.$store.dispatch('search', this.Key)
+    },
     openSearch () {
       this.isActive = !this.isActive
     }

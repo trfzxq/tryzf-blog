@@ -220,5 +220,12 @@ export default {
   },
   closeModal ({ commit }) {
     commit(types.CLOSE_MODAL)
+  },
+  search ({ commit }, key) {
+    return api.search(key).then(response => {
+      commit(types.SEARCH, response.data.articles)
+    }, response => {
+      console.log(response)
+    })
   }
 }

@@ -51,5 +51,8 @@ export default {
   },
   removeNav: function (id) {
     return types.RemoveNav.delete({id: id})
+  },
+  search: function (key) {
+    return types.Search.post({key: key})
   }
 }

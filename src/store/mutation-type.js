@@ -17,6 +17,6 @@ export const ADDNAV = 'ADDNAV'
 export const REMOVENAV = 'REMOVENAV'
 export const SAVEUPDATEARTICLE = 'SAVEUPDATEARTICLE'
 export const UPDATEARTICLE = 'UPDATEARTICLE'
-
+export const SEARCH = 'SEARCH'
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const CLOSE_MODAL = 'CLOSE_MODAL'
