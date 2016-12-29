@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="search-box">
-    <input placeholder="搜索" :class="{active: isActive}" @change="search" @key.enter="search" v-modal="key"/>
+    <input placeholder="搜索" :class="{active: isActive}" @change="search" @key.enter="search" v-model="key"/>
     <i class="glyphicon glyphicon-search search-icon" @click="openSearch"></i>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'search',
   data () {
     return {
       isActive: false,
@@ -15,7 +16,7 @@ export default {
   },
   methods: {
     search () {
-      this.$store.dispatch('search', this.Key)
+      this.$store.dispatch('search', this.key)
     },
     openSearch () {
       this.isActive = !this.isActive

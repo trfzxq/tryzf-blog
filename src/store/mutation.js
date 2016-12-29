@@ -63,7 +63,6 @@ export default {
   [types.UPDATEARTICLE] (state, data) {
     console.log('更新数组')
   },
-
   [types.SHOW_MODAL] (state, data) {
     state.modal.show = true
     state.modal.type = data.type

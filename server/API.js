@@ -47,7 +47,7 @@ module.exports = function (app) {
     res.json({state: 1, msg: '已登出'})
   })
 
-  /* 获取文件列表
+  /* 获取文章列表
   *  @param limit 一页显示几条数据
   * @param skip  从第几页开
   * @param name 搜索文章的字段
@@ -82,6 +82,26 @@ module.exports = function (app) {
       res.json({state: 0, msg: err})
     })
   });
+
+  /* search
+  *
+  */
+
+  app.get('/api/search', (req, res) => {
+    let key = req.query.key
+    let pattern = new RegExp( key, 'i')
+    console.log(key, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    db.Article.find({ 'title': pattern })
+    .sort({ time: -1})
+    .exec(function(err, docs) {
+	    if (err) {
+        res.json({state: 0, msg: err})
+      } else {
+        console.log(docs)
+        res.json({state: 1, articles: docs})
+      }
+	  })
+  })
 
   /*添加文章
   * @body title: 文章标题

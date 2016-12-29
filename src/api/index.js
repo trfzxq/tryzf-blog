@@ -1,8 +1,8 @@
 import * as types from './resources'
 
 export default {
-  getArticle: function (limit, skip) {
-    return types.GetArticle.get({limit: limit, skip: skip})
+  getArticle: function (options) {
+    return types.GetArticle.get({limit: options.limit, skip: options.skip, name: options.name})
   },
   getArticleDetaile: function (id) {
     return types.GetArticleDetaile.get({id: id})
@@ -52,7 +52,7 @@ export default {
   removeNav: function (id) {
     return types.RemoveNav.delete({id: id})
   },
-  search: function (key) {
-    return types.Search.post({key: key})
+  search: function (id) {
+    return types.Search.get({id: id})
   }
 }

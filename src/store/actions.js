@@ -21,7 +21,7 @@ export default {
     })
   },
   getArticle ({ commit }, options) {
-    return api.getArticle(options.limit, options.skip).then(response => {
+    return api.getArticle(options).then(response => {
       commit(types.GETARTICLE, response.data)
     }, response => {
       console.log('This is get article error at actions', response)
@@ -192,7 +192,8 @@ export default {
   addNav ({ commit }, data) {
     if (!data.path || !data.text) {
       showModal(commit, {
-        message: '添加信息不能为空'
+        message: '添加信息不能为空',
+        type: 'error'
       })
       return
     }
