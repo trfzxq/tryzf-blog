@@ -90,8 +90,7 @@ module.exports = function (app) {
   app.get('/api/search', (req, res) => {
     let key = req.query.key
     let pattern = new RegExp( key, 'i')
-    console.log(key, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-    db.Article.find({ 'title': pattern })
+    db.Article.find({ 'content': pattern })
     .sort({ time: -1})
     .exec(function(err, docs) {
 	    if (err) {
