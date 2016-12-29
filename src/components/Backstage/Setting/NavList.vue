@@ -54,7 +54,6 @@ export default {
   },
   created () {
     if (!this.navList.length) {
-      console.log('@@@@@@@@@@@@@@@', this.navList)
       this.getNavList()
     }
   },
@@ -63,20 +62,13 @@ export default {
       this.$store.dispatch('removeNav', index)
     },
     addNav () {
-      if (!this.navList.path) {
-        window.alert('请填写路径')
-      } else if (!this.navList.text) {
-        window.alert('请填写名称')
-      } else {
-        let data = {
-          path: this.navList.path,
-          text: this.navList.text
-        }
-        this.$store.dispatch('addNav', data)
+      let data = {
+        path: this.navList.path,
+        text: this.navList.text
       }
+      this.$store.dispatch('addNav', data)
     },
     getNavList () {
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
       this.$store.dispatch('getNavList')
     }
   },

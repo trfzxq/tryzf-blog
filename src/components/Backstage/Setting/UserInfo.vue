@@ -35,6 +35,9 @@ export default {
     }
   },
   methods: {
+    getUserInfo () {
+      this.$store.dispatch('getUserInfo')
+    },
     save () {
       if (!this.userInfo.blogTitle) {
         window.alert('博客名可不能为空哦！')

@@ -105,6 +105,7 @@ export default {
     color:#fff;
     font-size: 20px;
     text-align: center;
+    overflow: hidden;
   }
   .nav_list li a {
     padding:30px 0;

@@ -46,7 +46,9 @@ export default {
       this.$store.dispatch('createdArticle', data)
     },
     clear () {
-      this.temporaryArticle = {}
+      this.$store.state.updateArticle = {}
+      this.$store.state.temporaryArticle = {}
+      this.temArticle = {}
     },
     update () {
       let data = this.tempArticle

@@ -42,6 +42,13 @@ export default {
     })
   },
   saveSocailContact ({ commit }, data) {
+    if (!data.src || !data.path) {
+      showModal(commit, {
+        message: '路径或图片路径不能为空',
+        type: 'error'
+      })
+      return
+    }
     return api.saveSocailContact(data).then(response => {
       commit(types.SAVESOCAILCONTACT, data)
     }, response => {
@@ -49,11 +56,17 @@ export default {
     })
   },
   removeSocailContact ({ commit, state }, index) {
-    let id = [...state.socailContact][index]._id
-    return api.removeSocailContact(id).then(response => {
-      commit(types.REMOVESOCAILCONTACT, index)
-    }, response => {
-      console.log(response)
+    showModal(commit, {
+      message: '确定删除？',
+      type: 'question',
+      ok: () => {
+        let id = [...state.socailContact][index]._id
+        return api.removeSocailContact(id).then(response => {
+          commit(types.REMOVESOCAILCONTACT, index)
+        }, response => {
+          console.log(response)
+        })
+      }
     })
   },
   getSocailContact ({ commit }) {
@@ -72,22 +85,37 @@ export default {
   },
   removeArticle ({ commit, state }, index) {
     let id = [...state.articles][index]._id
-    return api.removeArticle(id).then(response => {
-      commit(types.REMOVEARTICLE, index)
-    }, response => {
-      console.log(response)
+    showModal(commit, {
+      message: '确实删除',
+      type: 'question',
+      ok: () => {
+        return api.removeArticle(id).then(response => {
+          commit(types.REMOVEARTICLE, index)
+        }, response => {
+          console.log(response)
+        })
+      }
     })
   },
   saveArticle ({ commit }, article) {
-    if (!article.title) {
+    if (!article.title || !article.types || !article.content) {
       showModal(commit, {
-        message: '标题不能为空'
+        message: '小家伙，内容没填写完整',
+        type: 'error'
       })
       return
     }
     return api.saveArticle(article).then(response => {
+      showModal(commit, {
+        message: '已保存！',
+        type: 'success'
+      })
       commit(types.SAVEARTICLE, article)
     }, response => {
+      showModal(commit, {
+        message: '保存失败',
+        type: 'error'
+      })
       console.log(response)
     })
   },
@@ -102,9 +130,24 @@ export default {
     commit(types.SAVEUPDATEARTICLE, index)
   },
   createdArticle ({ commit }, article) {
+    if (!article.title || !article.types || !article.content) {
+      showModal(commit, {
+        message: '小家伙，内容没填写完整',
+        type: 'error'
+      })
+      return
+    }
     return api.createdArticle(article).then(response => {
+      showModal(commit, {
+        message: '你真棒！' + response.data.msg,
+        type: 'success'
+      })
       commit(types.CREATEDARTICLE, article)
     }, response => {
+      showModal(commit, {
+        message: 'oh!on~' + response.data.msg,
+        type: 'error'
+      })
       console.log(response)
     })
   },
@@ -112,20 +155,47 @@ export default {
     commit(types.SETCURRPAGE, currPage)
   },
   updatePwd ({ commit }, data) {
+    if (!data.oldPwd || !data.newPwd) {
+      showModal(commit, {
+        message: '密码不能为空',
+        type: 'error'
+      })
+      return
+    }
     return api.updatePwd(data).then(response => {
+      showModal(commit, {
+        message: response.data.msg
+      })
       commit(types.UPDATEPWD, response)
     }, response => {
+      showModal(commit, {
+        message: response.data.msg
+      })
       console.log(response)
     })
   },
   updateUserInfo ({ commit }, data) {
     return api.updateUserInfo(data).then(response => {
+      showModal(commit, {
+        message: response.data.msg,
+        type: 'info'
+      })
       commit(types.UPDATEUSERINFO, response.data.userInfo)
     }, response => {
+      showModal(commit, {
+        message: response.data.msg,
+        type: 'info'
+      })
       console.log(response)
     })
   },
   addNav ({ commit }, data) {
+    if (!data.path || !data.text) {
+      showModal(commit, {
+        message: '添加信息不能为空'
+      })
+      return
+    }
     return api.addNav(data).then(response => {
       commit(types.ADDNAV, data)
     }, response => {
@@ -133,11 +203,16 @@ export default {
     })
   },
   removeNav ({ commit, state }, index) {
-    let id = [...state.navList][index]._id
-    return api.removeNav(id).then(response => {
-      commit(types.REMOVENAV, index)
-    }, response => {
-      console.log(response)
+    showModal(commit, {
+      message: '确定删除',
+      ok: () => {
+        let id = [...state.navList][index]._id
+        return api.removeNav(id).then(response => {
+          commit(types.REMOVENAV, index)
+        }, response => {
+          console.log(response)
+        })
+      }
     })
   },
   showModal ({ commit }, data) {

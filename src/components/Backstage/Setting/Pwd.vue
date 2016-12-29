@@ -24,13 +24,6 @@ export default {
   },
   methods: {
     submit () {
-      if (!this.oldPassword) {
-        window.alert('原密码不能为空')
-        return
-      } else if (!this.newPassword) {
-        window.alert('新密码不能为空')
-        return
-      }
       let data = {
         oldPwd: this.oldPassword,
         newPwd: this.newPassword
