@@ -11,16 +11,6 @@ const app = express();
 const router = express.Router();
 const API = require('./server/API.js');
 
-// const LEAN = require('leanengine')
-//
-// LEAN.init({
-//   appId: process.env.LEANCLOUD_APP_ID || '{{appid}}',
-//   appKey: process.env.LEANCLOUD_APP_KEY || '{{appkey}}',
-//   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '{{masterkey}}'
-// })
-//
-// app.user(LEAN.express())
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -46,5 +36,4 @@ app.get('/*', function (req, res) {
   return res.sendFile(__dirname + '/dist/index.html')
 })
 
-// app.listen(process.env.LEANCLOUD_APP_PORT)
-app.listen(process.env.PORT || 5050)
+app.listen(process.env.PORT || 3000)

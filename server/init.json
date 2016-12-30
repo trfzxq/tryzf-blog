@@ -18,19 +18,19 @@
   },
   {
     "type": "SocialContact",
-    "src": "http://localhost:3000/img/wx.png",
+    "src": "/img/wx.png",
     "isAction": true,
     "path": "/"
   },
   {
     "type": "SocialContact",
-    "src": "http://localhost:3000/img/wb.png",
+    "src": "/img/wb.png",
     "isAction": true,
     "path": "/"
   },
   {
     "type": "SocialContact",
-    "src": "http://localhost:3000/img/github.png",
+    "src": "/img/github.png",
     "isAction": true,
     "path": "/"
   }

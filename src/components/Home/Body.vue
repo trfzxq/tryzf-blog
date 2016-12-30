@@ -31,8 +31,11 @@ export default {
   computed: {
     articlesList: function () {
       let newArticles = []
+      console.log(this.articles, 'home articles')
+      console.log(!this.articles, 'home articles')
       if (this.articles) {
         this.articles.forEach((item) => {
+          console.log(item)
           item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
           newArticles.push(item)
         })

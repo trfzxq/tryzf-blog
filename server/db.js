@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const init = require('./init.json')
 const crypto = require('crypto')
+const MONGODB_URI = require('../config/db_config.js').MONGODB_URI
 
 const userSchema = new Schema({
   username: String,
@@ -74,7 +75,7 @@ const initialize = function () {
 }
 
 
-mongoose.connect('mongodb://root:65oosDNoneacnzPVG73zCoevgXLFDFS0SHhTAvaF@clyqlklfouet.mongodb.sae.sina.com.cn:10523,ipzwyjblkjsv.mongodb.sae.sina.com.cn:10523')
+mongoose.connect(MONGODB_URI)
 
 const db = mongoose.connection
 
