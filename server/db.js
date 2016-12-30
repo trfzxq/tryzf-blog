@@ -74,7 +74,7 @@ const initialize = function () {
 }
 
 
-mongoose.connect('mongodb://localhost/zhangfu')
+mongoose.connect(MONGODB_URI)
 
 const db = mongoose.connection
 
