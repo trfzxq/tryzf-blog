@@ -31,10 +31,12 @@ export default {
   computed: {
     articlesList: function () {
       let newArticles = []
-      this.articles.forEach((item) => {
-        item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
-        newArticles.push(item)
-      })
+      if (this.articles.length) {
+        this.articles.forEach((item) => {
+          item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
+          newArticles.push(item)
+        })
+      }
       return newArticles
     }
   }
