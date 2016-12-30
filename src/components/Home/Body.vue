@@ -31,6 +31,7 @@ export default {
   computed: {
     articlesList: function () {
       let newArticles = []
+      console.log(this.articles)
       if (this.articles.length) {
         this.articles.forEach((item) => {
           item.date = moment(new Date(item.date)).locale('zh-cn').calendar()

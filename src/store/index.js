@@ -20,7 +20,7 @@ const state = {
   isUpdateArticle: false,
   articlesTotal: 0,
   articleDetaile: {},
-  userInfo: [],
+  userInfo: {},
   navList: [],
   socailContact: [],
   temporaryArticle: null,
