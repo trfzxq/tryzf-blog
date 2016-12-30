@@ -40,10 +40,12 @@ export default {
   computed: {
     articleList () {
       let newArticleList = []
-      this.$store.state.articles.forEach((item) => {
-        item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
-        newArticleList.push(item)
-      })
+      if (this.$store.state.articles) {
+        this.$store.state.articles.forEach((item) => {
+          item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
+          newArticleList.push(item)
+        })
+      }
       return newArticleList
     }
   },
