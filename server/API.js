@@ -53,8 +53,8 @@ module.exports = function (app) {
   * @param name 搜索文章的字段
   */
   app.get('/api/getArticle', (req, res) => {
-    let limit = req.query.limit || 1
-    let start = req.query.skip || 1
+    let limit = Number(req.query.limit) || 1
+    let start = Number(req.query.skip) || 1
     let query = req.query.name || {}
 
     db.Article.count(query, function(err, data) {
