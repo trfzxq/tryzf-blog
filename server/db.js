@@ -74,7 +74,7 @@ const initialize = function () {
 }
 
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect('mongodb://root:65oosDNoneacnzPVG73zCoevgXLFDFS0SHhTAvaF@clyqlklfouet.mongodb.sae.sina.com.cn:10523,ipzwyjblkjsv.mongodb.sae.sina.com.cn:10523')
 
 const db = mongoose.connection
 
