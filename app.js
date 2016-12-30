@@ -1,8 +1,6 @@
 /*
-  init_redis: 初始化几个漂流瓶
-  routers   : 所有路由
+* LEAN express cleanCloud SDK
 */
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -12,6 +10,16 @@ const path = require('path');
 const app = express();
 const router = express.Router();
 const API = require('./server/API.js');
+
+// const LEAN = require('leanengine')
+//
+// LEAN.init({
+//   appId: process.env.LEANCLOUD_APP_ID || '{{appid}}',
+//   appKey: process.env.LEANCLOUD_APP_KEY || '{{appkey}}',
+//   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '{{masterkey}}'
+// })
+//
+// app.user(LEAN.express())
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -37,6 +45,8 @@ API(app);
 app.get('/*', function (req, res) {
   return res.sendFile(__dirname + '/dist/index.html')
 })
+
+// app.listen(process.env.LEANCLOUD_APP_PORT)
 
 app.listen(3000, function(){
   console.log('start vue2.0 blog server')
