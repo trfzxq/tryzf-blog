@@ -47,7 +47,4 @@ app.get('/*', function (req, res) {
 })
 
 // app.listen(process.env.LEANCLOUD_APP_PORT)
-
-app.listen(3000, function(){
-  console.log('start vue2.0 blog server')
-});
+app.listen(process.env.PORT || 5050)
