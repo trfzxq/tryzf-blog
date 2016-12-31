@@ -14,7 +14,8 @@ export default {
 
 <style lang="css" scoped>
   .title {
-    font-size:20px;
+    font-size:30px;
+    font-weight: bold;
     color:#666;
     border-bottom:1px solid #eee;
     padding:20px 0;

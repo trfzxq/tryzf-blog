@@ -61,7 +61,8 @@ export default {
   .title {
     color:#2c3e50;
     margin: 10px 0 20px 0;
-    font-size:23px;
+    font-size:30px;
+    font-weight: bold;
   }
   .abstract {
     color:#7f8c8d;
