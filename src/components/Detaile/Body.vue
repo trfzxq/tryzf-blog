@@ -1,8 +1,7 @@
 <template lang="html">
   <div class="col-xs-8 col-xs-offset-2">
     <span class='title'>{{ article.title }}</span>
-    <article class="aritcle_content">
-      {{ article.content }}
+    <article class="aritcle_content" v-html="article.content">
     </article>
   </div>
 </template>

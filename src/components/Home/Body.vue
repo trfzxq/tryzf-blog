@@ -4,8 +4,7 @@
       <li v-for="item in articlesList" :key="item.id">
         <router-link :to="'/article/' + item._id" class="title">{{ item.title }}</router-link>
         <time class="time">{{ item.date }}</time>
-        <article class="abstract">
-          {{ item.content }}
+        <article class="abstract" v-html="item.content">
         </article>
         <div class="article-info clearfix">
           <div class="pull-left article-author">

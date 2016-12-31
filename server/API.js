@@ -131,13 +131,13 @@ module.exports = function (app) {
   *
   */
   app.put('/api/updateArticle', (req, res) => {
-    let { title, content, types, id } = req.body
+    let { title, content, types, _id } = req.body
     let data = {
       title: title,
       content: content,
       types: types.split(';')
     }
-    db.Article.update({'_id': id}, {$set: data}, err => {
+    db.Article.update({'_id': _id}, {$set: data}, err => {
       if (err) {
         res.json({state: 0, msg: err})
       } else {

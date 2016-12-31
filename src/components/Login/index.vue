@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="col-sm-4 col-sm-offset-4 login-module">
-    <h1 class="page_title">Login backstage</h1>
+    <h1 class="page_title">登录后台管理</h1>
     <form class="form">
       <div class="form-group">
         <label>Username</label>
@@ -11,10 +11,7 @@
         <input type="password" class="form-control" placeholder="password" v-model.trim="password"/>
       </div>
       <div class="clearfix">
-        <label class="checkbox_label">
-          <input type="checkbox"/> Remember password
-        </label>
-        <button type="button" class="btn btn-empty btn-primary pull-right" @click="submitLogin">Login</button>
+        <button type="button" class="btn btn-empty btn-primary btn-block" @click="submitLogin">Login</button>
       </div>
     </form>
   </div>
@@ -25,16 +22,9 @@ export default {
   data () {
     return {
       password: null,
-      username: null,
-      message: {
-        title: '请假'
-      },
-      hello: null
+      username: null
     }
   },
-  computed: {},
-  ready () {},
-  attached () {},
   methods: {
     submitLogin () {
       if (!this.username || !this.password) {

@@ -8,8 +8,10 @@ import routes from './routes.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'animate.css'
 import './assets/styles/index.css'
+import 'highlight.js/styles/atom-one-light.css'
 import { infiniteScroll } from 'vue-infinite-scroll'
 import Modal from './components/common/modal/UiModal'
+
 Vue.use(VueRouter)
 
 Vue.component('ui-modal', Modal)

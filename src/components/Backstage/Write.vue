@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label>正文</label>
-      <textarea class="form-control" v-model="tempArticle.content"></textarea>
+      <Markdown ref="markdown"></Markdown>
     </div>
     <div class="form-group">
       <button type="button" name="button" class="btn btn-danger" @click="clear">清空</button>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import Markdown from '../common/Markdown'
 export default {
   data () {
     return {
@@ -30,6 +31,7 @@ export default {
   },
   computed: {
     tempArticle () {
+      console.log('湖区哦阿达上发了急啊看到')
       return this.$store.state.updateArticle || this.$store.state.temporaryArticle || {}
     },
     isUpdateArticle () {
@@ -39,10 +41,12 @@ export default {
   methods: {
     save () {
       let data = this.tempArticle
+      data.content = this.$refs.markdown.getValue()
       this.$store.dispatch('saveArticle', data)
     },
     add () {
       let data = this.tempArticle
+      data.content = this.$refs.markdown.getValue()
       this.$store.dispatch('createdArticle', data)
     },
     clear () {
@@ -52,9 +56,12 @@ export default {
     },
     update () {
       let data = this.tempArticle
-      console.log(data)
+      data.content = this.$refs.markdown.getValue()
       this.$store.dispatch('updateArticle', data)
     }
+  },
+  components: {
+    Markdown
   }
 }
 </script>
