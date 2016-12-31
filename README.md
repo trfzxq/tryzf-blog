@@ -14,8 +14,7 @@ npm run dev
 #api serve localhost:3000
 npm run start
 
-//上面是开发环境启动，下面是
-
+//上面是开发环境启动，下面是生成环境
 # build for production with minification
 npm run build
 
