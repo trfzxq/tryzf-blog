@@ -61,7 +61,8 @@ export default {
     state.isUpdateArticle = true
   },
   [types.UPDATEARTICLE] (state, data) {
-    console.log('更新数组')
+    state.isUpdateArticle = false
+    state.updateArticle = {}
   },
   [types.SHOW_MODAL] (state, data) {
     state.modal.show = true

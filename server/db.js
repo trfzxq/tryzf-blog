@@ -14,6 +14,7 @@ const articleSchema = new Schema({
   date: Date,
   content: String,
   author: String,
+  sourceContent: String,
   types: Array
 })
 
@@ -21,6 +22,7 @@ const temporaryArticleSchema = new Schema({
   title: String,
   date: Date,
   content: String,
+  sourceContent: String,
   author: String,
   types: Array
 })

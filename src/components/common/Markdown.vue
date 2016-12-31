@@ -8,6 +8,7 @@ import SimpleMDECSS from 'simplemde/dist/simplemde.min.css'
 import hljs from 'highlight.js'
 export default {
   name: 'markdown',
+  props: ['sourceContent'],
   data () {
     return {
       simplemde: null
@@ -15,9 +16,17 @@ export default {
   },
   mounted () {
     this.created()
+    if (this.sourceContent) {
+      this.simplemde.value(this.sourceContent)
+    } else {
+      this.simplemde.value('')
+    }
   },
   methods: {
-    getValue () {
+    getMarkdownValue () {
+      return this.simplemde.value()
+    },
+    getHtmlValue () {
       let value = this.simplemde.value()
       return this.simplemde.markdown(value)
     },

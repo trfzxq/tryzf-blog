@@ -6,11 +6,11 @@
     </div>
     <div class="form-group">
       <label>类型</label>
-      <input class="form-control" type="text" placeholder="类型" v-model="tempArticle.types"/>
+      <input class="form-control" type="text" placeholder="不同类型用;隔开" v-model="tempArticle.types"/>
     </div>
     <div class="form-group">
       <label>正文</label>
-      <Markdown ref="markdown"></Markdown>
+      <Markdown ref="markdown" :sourceContent="tempArticle.sourceContent"></Markdown>
     </div>
     <div class="form-group">
       <button type="button" name="button" class="btn btn-danger" @click="clear">清空</button>
@@ -31,8 +31,11 @@ export default {
   },
   computed: {
     tempArticle () {
-      console.log('湖区哦阿达上发了急啊看到')
-      return this.$store.state.updateArticle || this.$store.state.temporaryArticle || {}
+      let article = this.$store.state.updateArticle || this.$store.state.temporaryArticle || {}
+      if (article.types instanceof Array) {
+        article.types = article.types.join(';')
+      }
+      return article
     },
     isUpdateArticle () {
       return this.$store.state.isUpdateArticle
@@ -41,12 +44,14 @@ export default {
   methods: {
     save () {
       let data = this.tempArticle
-      data.content = this.$refs.markdown.getValue()
+      data.content = this.$refs.markdown.getHtmlValue()
+      data.sourceContent = this.$refs.markdown.getMarkdownValue()
       this.$store.dispatch('saveArticle', data)
     },
     add () {
       let data = this.tempArticle
-      data.content = this.$refs.markdown.getValue()
+      data.content = this.$refs.markdown.getHtmlValue()
+      data.sourceContent = this.$refs.markdown.getMarkdownValue()
       this.$store.dispatch('createdArticle', data)
     },
     clear () {
@@ -56,8 +61,12 @@ export default {
     },
     update () {
       let data = this.tempArticle
-      data.content = this.$refs.markdown.getValue()
+      data.content = this.$refs.markdown.getHtmlValue()
+      data.sourceContent = this.$refs.markdown.getMarkdownValue()
       this.$store.dispatch('updateArticle', data)
+      .then(() => {
+        this.$router.push('/backstage/articleList')
+      })
     }
   },
   components: {

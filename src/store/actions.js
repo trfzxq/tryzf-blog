@@ -1,6 +1,6 @@
 import * as types from './mutation-type.js'
 import api from 'api/index.js'
-
+import router from 'vue-router'
 const showModal = (commit, data) => {
   commit(types.SHOW_MODAL, data)
 }
@@ -139,8 +139,11 @@ export default {
     }
     return api.createdArticle(article).then(response => {
       showModal(commit, {
-        message: '你真棒！' + response.data.msg,
-        type: 'success'
+        message: response.data.msg + '是否要去首页',
+        type: 'success',
+        ok: () => {
+          window.location.pathname = '/'
+        }
       })
       commit(types.CREATEDARTICLE, article)
     }, response => {

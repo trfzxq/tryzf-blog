@@ -109,15 +109,17 @@ module.exports = function (app) {
   * @body types: 文字分类
   */
   app.post('/api/createdArticle', (req, res) => {
-    let {title, content, types} = req.body
+    let {title, content, types, sourceContent} = req.body
     types = types.split(';')
     let article = {
       title: title,
       date: (new Date()).toLocaleString(),
       content: content,
       types: types,
+      sourceContent: sourceContent,
       author: session.username
     }
+    console.log('sourceContent', sourceContent)
     db.Article(article).save((err, data) => {
       if (err) {
         res.json({state: 0, msg: err})
@@ -131,10 +133,11 @@ module.exports = function (app) {
   *
   */
   app.put('/api/updateArticle', (req, res) => {
-    let { title, content, types, _id } = req.body
+    let { title, content, types, _id, sourceContent } = req.body
     let data = {
       title: title,
       content: content,
+      sourceContent: sourceContent,
       types: types.split(';')
     }
     db.Article.update({'_id': _id}, {$set: data}, err => {
