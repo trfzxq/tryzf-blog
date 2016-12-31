@@ -71,7 +71,7 @@ module.exports = function (app) {
       } else {
         start = start * limit
       }
-      db.Article.find().skip((start - 1) * limit).sort({time:-1}).limit(limit).exec((err, data) => {
+      db.Article.find().skip((start - 1) * limit).sort({date: -1}).limit(limit).exec((err, data) => {
         if(err) {
           res.json({state: 0, msg: err})
         } else {
@@ -91,7 +91,7 @@ module.exports = function (app) {
     let key = req.query.key
     let pattern = new RegExp( key, 'i')
     db.Article.find({ 'content': pattern })
-    .sort({ time: -1})
+    .sort({ date: -1})
     .exec(function(err, docs) {
 	    if (err) {
         res.json({state: 0, msg: err})
