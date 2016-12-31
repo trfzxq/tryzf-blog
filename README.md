@@ -1,4 +1,4 @@
-# vue2.0构建的一个SAP博客
+# vue2.0构建的一个SPA博客
 
 ## Build Setup
 
