@@ -32,7 +32,7 @@ app.use(session(sess));
 API(app);
 
 
-app.get('/*', function (req, res) {
+app.get('/*', (req, res) => {
   return res.sendFile(__dirname + '/dist/index.html')
 })
 

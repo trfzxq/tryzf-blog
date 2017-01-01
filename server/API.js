@@ -11,6 +11,8 @@ module.exports = function (app) {
   app.post('/api/*', checkLogin)
   app.delete('/api/*', checkLogin)
   app.put('/api/*', checkLogin)
+
+  app.get('/api/*', isIllegal)
   /* 登录
   *  @body username
   *  @body password
@@ -405,5 +407,14 @@ function checkLogin(req, res, next) {
     next()
   } else {
     res.status(403).send('您没有权限访问！');
+  }
+}
+//过滤非法操作访问
+function isIllegal (req, res, next) {
+  let token = req.headers.authorization
+  if (!session.token && token) {
+    res.status(403).send('您没有权限访问！')
+  } else {
+    next()
   }
 }
