@@ -19,7 +19,7 @@
         <input type="checkbox" v-model="socailContact.isAction"/>显示
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-lg" type="button" @click="save">添加</button>
+        <button class="btn btn-primary btn-lg visible-xs-12" type="button" @click="save">添加</button>
       </div>
     </form>
     <div class="table-responsive mrgT30">

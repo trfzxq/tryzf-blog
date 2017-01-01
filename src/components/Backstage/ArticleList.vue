@@ -83,6 +83,9 @@ thead th {
   display: inline-block;
   margin-right: 10px;
 }
+.table-responsive {
+  border: none;
+}
 .table > tbody > tr > td {
   font-size:16px;
   vertical-align: inherit;

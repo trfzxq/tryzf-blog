@@ -3,19 +3,19 @@
     <div class="nav">
       <router-link to="/backstage/setting/pwd" active-class="nav-active">
         <i class="glyphicon glyphicon-lock"></i>
-        密码修改
+        <span class="hidden-xs">密码修改</span>
       </router-link>
       <router-link to="/backstage/setting/userInfo" active-class="nav-active">
         <i class="glyphicon glyphicon-user"></i>
-        用户信息
+        <span class="hidden-xs">用户信息</span>
       </router-link>
       <router-link to="/backstage/setting/nav" active-class="nav-active">
         <i class="glyphicon glyphicon-th-large"></i>
-        导航栏
+        <span class="hidden-xs">导航栏</span>
       </router-link>
       <router-link to="/backstage/setting/socailContact" active-class="nav-active">
         <i class="glyphicon glyphicon-glass"></i>
-        社交管理
+        <span class="hidden-xs">社交管理</span>
       </router-link>
     </div>
     <router-view></router-view>

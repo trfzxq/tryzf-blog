@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="backstage-main">
-    <div class="left-module col-sm-2">
+    <div class="left-module col-sm-2 hidden-xs">
       <div class="logo">
         欢迎进入博客后台
       </div>
@@ -32,6 +32,13 @@
       </div>
       <div class="right-module_main">
         <router-view></router-view>
+      </div>
+      <div class="bottom-nav hidden-sm hidden-md hidden-lg">
+        <li v-for="item in navList" key="item.id">
+          <router-link :to="item.path">
+            <i :class="item.icon" class="icon"></i>
+          </router-link>
+        </li>
       </div>
     </div>
   </div>
@@ -135,6 +142,7 @@ export default {
   }
   .right-module {
     padding: 0;
+    min-height: 100%;
   }
   .right-module_header {
     height: 80px;
@@ -160,7 +168,7 @@ export default {
   }
   .to_greet {
     font-size:30px;
-    color:#797070;
+    color:#2d3f4d;
     margin-left: 30px;
   }
   .right-module_main {
@@ -176,5 +184,18 @@ export default {
   }
   .mrgL30 {
     margin-left: 30px;
+  }
+  .bottom-nav {
+    background: #2d3f4d;
+    padding: 10px 0;
+    display: flex;
+    text-align: center;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+  }
+  .bottom-nav li {
+    flex:1;
+    list-style: none;
   }
 </style>
