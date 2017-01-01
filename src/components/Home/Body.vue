@@ -55,6 +55,15 @@ export default {
   article {
     max-height: 330px;
     overflow: hidden;
+    position: relative;
+  }
+  article::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(255, 255, 255, 0.6)), to(rgba(255, 255, 255, 0.8)));
   }
   .article-list_ul li {
     margin-bottom: 60px;
