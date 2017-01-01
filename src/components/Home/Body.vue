@@ -17,6 +17,12 @@
               <router-link :to="type">{{ type }}</router-link>
             </span>
           </div>
+          <div class="pull-right">
+            <router-link :to="'/article/' + item._id">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+              查看全文
+            </router-link>
+          </div>
         </div>
       </li>
     </ul>
@@ -46,6 +52,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  article {
+    max-height: 330px;
+    overflow: hidden;
+  }
   .article-list_ul li {
     margin-bottom: 60px;
   }
