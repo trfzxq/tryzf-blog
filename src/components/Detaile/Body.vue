@@ -17,7 +17,6 @@ export default {
     font-size:30px;
     font-weight: bold;
     color:#666;
-    border-bottom:1px solid #eee;
     padding:20px 0;
     font-weight: bold;
     letter-spacing: 3px;
