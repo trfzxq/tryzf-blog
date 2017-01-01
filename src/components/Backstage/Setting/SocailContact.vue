@@ -68,7 +68,7 @@ export default {
       let data = {
         src: this.socailContact.src,
         path: this.socailContact.path,
-        isAction: this.socailContact.isAction || false
+        isAction: this.socailContact.isAction || true
       }
       this.$store.dispatch('saveSocailContact', data)
     },

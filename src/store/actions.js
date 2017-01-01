@@ -178,6 +178,13 @@ export default {
     })
   },
   updateUserInfo ({ commit }, data) {
+    if (!data.blogTitle || !data.headURL || !motto) {
+      showModal(commit, {
+        message: '添加些资料感觉好点吧！！！',
+        type: 'info'
+      })
+      return
+    }
     return api.updateUserInfo(data).then(response => {
       showModal(commit, {
         message: response.data.msg,

@@ -7,7 +7,7 @@
             <img :src="userInfo.headURL" class="user_head_pic"/>
           </figure>
         </router-link>
-        <div class="col-sm-8">
+        <div class="col-sm-8 hidden-xs">
           <h1 class="name">{{ userInfo.blogTitle }}</h1>
           <h3 class="motto">{{ userInfo.motto }}</h3>
         </div>

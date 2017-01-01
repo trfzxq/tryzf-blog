@@ -1,6 +1,6 @@
 <template lang="html">
   <header :class="{ isScrollClass: isScroll }">
-    <div class="col-sm-5">
+    <div class="col-sm-5 hidden-xs">
       <router-link id="logo_a" class="col-sm-5" to="/">
         <img :src="logo" class="logo"/>
       </router-link>

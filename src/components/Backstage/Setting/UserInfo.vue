@@ -39,20 +39,12 @@ export default {
       this.$store.dispatch('getUserInfo')
     },
     save () {
-      if (!this.userInfo.blogTitle) {
-        window.alert('博客名可不能为空哦！')
-      } else if (!this.userInfo.motto) {
-        window.alert('没有一句介绍自己的话可不好')
-      } else if (!this.userInfo.headURL) {
-        window.alert('真调皮！头像的地址都不写')
-      } else {
-        let data = {
-          blogTitle: this.userInfo.blogTitle,
-          headURL: this.userInfo.headURL,
-          motto: this.userInfo.motto
-        }
-        this.$store.dispatch('updateUserInfo', data)
+      let data = {
+        blogTitle: this.userInfo.blogTitle,
+        headURL: this.userInfo.headURL,
+        motto: this.userInfo.motto
       }
+      this.$store.dispatch('updateUserInfo', data)
     }
   },
   components: {}

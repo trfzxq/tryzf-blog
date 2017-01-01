@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="m-header">
-    <figure class="m-bg" :style='{background:bg}'></figure>
+    <figure class="m-bg"></figure>
     <canvas class="canvas" ref="canvas">你看不到我</canvas>
   </div>
 </template>
@@ -12,10 +12,6 @@ export default {
     }
   },
   computed: {
-    bg () {
-      let src = require('assets/img/4.jpg')
-      return 'url(' + src + ')'
-    }
   },
   mounted () {
     this.createCanvas()
@@ -74,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
   .m-header {
     width: 100%;
     height: 500px;
@@ -84,6 +80,7 @@ export default {
   figure {
     width:100%;
     height: 100%;
+    background:url('/static/4.jpg');
     background-size:cover;
   }
   .canvas{
