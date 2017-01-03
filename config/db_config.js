@@ -1,9 +1,4 @@
-let MONGODB_URI = 'mongodb://localhost/zhangfu'
-
-if (process.env.MONGODB_URI) {
-  //MONGODBURL ：改为自己线上的mongodb_uri
-  MONGODB_URI = 'mongodb://root:65oosDNoneacnzPVG73zCoevgXLFDFS0SHhTAvaF@clyqlklfouet.mongodb.sae.sina.com.cn:10523,ipzwyjblkjsv.mongodb.sae.sina.com.cn:10523'
-}
+let MONGODB_URI = 'mongodb://tryzf:.tryzf253545.@127.0.0.1:27017/zhangfu'
 
 module.exports = {
   MONGODB_URI: MONGODB_URI

@@ -77,7 +77,7 @@ const initialize = function () {
 }
 
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { auto_reconnect: true })
 
 const db = mongoose.connection
 
