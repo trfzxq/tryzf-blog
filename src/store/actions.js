@@ -178,7 +178,7 @@ export default {
     })
   },
   updateUserInfo ({ commit }, data) {
-    if (!data.blogTitle || !data.headURL || !motto) {
+    if (!data.blogTitle || !data.headURL || !data.motto) {
       showModal(commit, {
         message: '添加些资料感觉好点吧！！！',
         type: 'info'
