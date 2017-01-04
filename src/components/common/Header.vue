@@ -18,7 +18,7 @@ import Search from './Search'
 export default {
   data () {
     return {
-      logo: 'http://yumemor.com/hexo-theme-varaint/favicon.png',
+      logo: '/static/logo.png',
       isScroll: false
     }
   },
