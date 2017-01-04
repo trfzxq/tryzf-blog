@@ -35,4 +35,4 @@ API(app);
 app.get('/*', (req, res) => {
   return res.sendFile(__dirname + '/dist/index.html')
 })
-app.listen(process.env.PORT || 8070)
+app.listen(3002)
