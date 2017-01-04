@@ -22,6 +22,9 @@ export default {
   saveSocailContact: function (data) {
     return types.SaveSocailContact.save(data)
   },
+  updateSocailContact: function (data) {
+    return types.UpdateSocailContact.update(data)
+  },
   removeSocailContact: function (id) {
     return types.RemoveSocailContact.delete({id: id})
   },

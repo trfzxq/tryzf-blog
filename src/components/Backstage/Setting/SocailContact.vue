@@ -6,20 +6,20 @@
           <div class="input-group-addon">
             <i class="glyphicon glyphicon-flag"></i>
           </div>
-          <input class="form-control input-lg" type="text" placeholder="图标src" v-model="socailContact.src"/>
+          <input ref="src" class="form-control input-lg" type="text" placeholder="图标src" v-model="newSocailContact.src"/>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><i class="glyphicon glyphicon-road"></i></div>
-          <input class="form-control input-lg" type="text" placeholder="社交链接" v-model="socailContact.path"/>
+          <input ref="path" class="form-control input-lg" type="text" placeholder="社交链接" v-model="newSocailContact.path"/>
         </div>
       </div>
       <div class="form-group">
-        <input type="checkbox" v-model="socailContact.isAction"/>显示
+        <input type="checkbox" ref="checkbox" v-model="newSocailContact.isAction"/>显示
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-lg visible-xs-12" type="button" @click="save">添加</button>
+        <button class="btn btn-primary btn-lg visible-xs-12" type="button" @click="save">{{ buttonText }}</button>
       </div>
     </form>
     <div class="table-responsive mrgT30">
@@ -33,14 +33,14 @@
           </tr>
         </thead>
         <tbody class="table-striped">
-          <tr v-for="(item, index) in socailContact">
+          <tr v-for="(item, index) in socailContact" key="item.id" @click="getUpdateObj(index)">
             <td>{{ item.src }}</td>
             <td>{{ item.path }}</td>
             <td>
               {{ item.isAction }}
             </td>
             <td>
-              <button type="button" class="btn btn-danger" @click="remove(index)">删除</button>
+              <button type="button" class="btn btn-danger" @click.stop="remove(index)">删除</button>
             </td>
           </tr>
         </tbody>
@@ -50,6 +50,18 @@
 
 <script>
 export default {
+  data () {
+    return {
+      'newSocailContact': {
+        src: '',
+        path: '',
+        isAction: true,
+        isUpdate: false
+      },
+      'buttonText': '添加',
+      'updateItemIndex': null
+    }
+  },
   computed: {
     socailContact () {
       return this.$store.state.socailContact
@@ -66,14 +78,34 @@ export default {
     },
     save () {
       let data = {
-        src: this.socailContact.src,
-        path: this.socailContact.path,
-        isAction: this.socailContact.isAction || true
+        src: this.newSocailContact.src,
+        path: this.newSocailContact.path,
+        isAction: this.newSocailContact.isAction
       }
-      this.$store.dispatch('saveSocailContact', data)
+      if (this.newSocailContact.isUpdate) {
+        data._id = this.updateItemIndex
+        let putData = {
+          data: data,
+          newSocailContactList: this.socailContact
+        }
+        this.$store.dispatch('updateSocailContact', putData)
+        .then(() => {
+          this.buttonText = '添加'
+        })
+      } else {
+        this.$store.dispatch('saveSocailContact', data)
+      }
     },
     getSocailContact () {
       this.$store.dispatch('getSocailContact')
+    },
+    getUpdateObj (index) {
+      let indexValue = this.socailContact[index]
+      this.newSocailContact = indexValue
+
+      this.newSocailContact.isUpdate = true
+      this.buttonText = '更改'
+      this.updateItemIndex = this.socailContact[index]._id
     }
   },
   components: {}

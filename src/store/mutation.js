@@ -23,6 +23,9 @@ export default {
   [types.SAVESOCAILCONTACT] (state, data) {
     state.socailContact.push(data)
   },
+  [types.UPDATESOCAILCONTACT] (state, data) {
+    state.socailContact = data
+  },
   [types.REMOVESOCAILCONTACT] (state, index) {
     state.socailContact.splice(index, 1)
   },

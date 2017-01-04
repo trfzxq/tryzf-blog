@@ -252,10 +252,29 @@ app.post('/api/saveSocialContact', (req, res) => {
   })
 });
 
+/* 更新社交帐号
+*  @body _id 、src path  isAction
+*/
+app.put('/api/updateSocialContact', (req, res) => {
+  let { _id, src, path, isAction } = req.body
+  let data = {
+    src: src,
+    path: path,
+    isAction: isAction
+  }
+  db.SocialContact.update({'_id': _id}, {$set: data}, err => {
+    if (err) {
+      res.json({state: 0, msg: err})
+    } else {
+      res.json({state: 1, msg: '更改成功'})
+    }
+  })
+})
+
 /* 删除社交图标
 *
 */
-app.delete('/api/removeSocailContact', (req, res) => {
+app.delete('/api/removeSocialContact', (req, res) => {
   let id = req.query.id
   db.SocialContact.remove({'_id': id}).exec((err, data) => {
     if (err) {

@@ -55,6 +55,24 @@ export default {
       console.log(response)
     })
   },
+  updateSocailContact ({ commit }, putData) {
+    if (!putData.data.src || !putData.data.path) {
+      showModal(commit, {
+        message: '路径或图片路径不能为空',
+        type: 'error'
+      })
+      return
+    }
+    return api.updateSocailContact(putData.data).then(response => {
+      showModal(commit, {
+        message: '修改成功',
+        type: 'info'
+      })
+      commit(types.UPDATESOCAILCONTACT, putData.newSocailContactList)
+    }, response => {
+      console.log(response)
+    })
+  },
   removeSocailContact ({ commit, state }, index) {
     showModal(commit, {
       message: '确定删除？',
