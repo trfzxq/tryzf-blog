@@ -1,6 +1,6 @@
 # vue2.0构建的一个SPA博客
 
-> 前端采用了2.0版本(vue + vue-router + vuex + vue-resource)等，API端采用express + mongodb
+> 前端采用了2.0版本(vue + vue-router + vuex + vue-resource)等，API端采用express + mongodb.[项目Demo](tryzf.online)
 
 ## Build Setup
 
