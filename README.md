@@ -25,4 +25,5 @@ npm run start
 ### 修改config/db_config.js里面的URI 本地mongodbURI  
 > 例如：mongodb://tryzf:tryzf253545@127.0.0.1:27017/zhangfu（数据库有帐号密码的情况）
 > 'mongodb://l27.0.0.1:27017/zhangfu (数据库无帐号密码)
+
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
