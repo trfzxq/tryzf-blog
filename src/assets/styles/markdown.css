@@ -17,6 +17,9 @@ article blockquote {
   padding-left: 20px;
   margin-bottom: 20px;
 }
+article pre {
+  letter-spacing: 0;
+}
 article h1,
 article h2,
 article h3,
