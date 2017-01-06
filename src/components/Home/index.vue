@@ -4,8 +4,8 @@
     <minHeader v-once></minHeader>
     <transition
       name="custom-classes-transition"
-      enter-active-class="animated fadeInDown"
-      leave-active-class="animated fadeOutLeft"
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
     >
       <router-view></router-view>
     </transition>
