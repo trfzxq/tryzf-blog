@@ -5,7 +5,7 @@
     <transition
       name="custom-classes-transition"
       enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
+      leave-active-class="animated fadeIn"
     >
       <router-view></router-view>
     </transition>
