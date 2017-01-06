@@ -2,4 +2,3 @@
 node_modules/
 npm-debug.log
 config/db_config.js.dist
-config/db_config.js
