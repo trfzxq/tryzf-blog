@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutation.js'
 import actions from './actions.js'
+import moment from 'moment'
 
 Vue.use(Vuex)
 
@@ -27,8 +28,18 @@ const state = {
   modal: modal
 }
 
+const getters = {
+  getArticleList: state => {
+    state.articles.map(article => {
+      article.date = moment(new Date(article.date)).locale('zh-cn').calendar()
+    })
+    return state.articles
+  }
+}
+
 export default new Vuex.Store({
   state,
   mutations,
+  getters,
   actions
 })

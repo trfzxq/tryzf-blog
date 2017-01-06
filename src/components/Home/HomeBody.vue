@@ -2,7 +2,7 @@
   <div class="article-title_list">
     <ul class="col-xs-8 col-xs-offset-2 article-list_ul">
       <li v-for="item in articlesList" :key="item.id">
-        <router-link :to="'/article/' + item._id" class="title">{{ item.title }}</router-link>
+        <router-link :to="'/home/article/' + item._id" class="title">{{ item.title }}</router-link>
         <time class="time">{{ item.date }}</time>
         <article class="abstract" v-html="item.content">
         </article>
@@ -32,20 +32,10 @@
 <script>
 import moment from 'moment'
 export default {
-  props: ['articles'],
+  name: 'articleList',
   computed: {
-    articlesList: function () {
-      let newArticles = []
-      console.log(this.articles, 'home articles')
-      console.log(!this.articles, 'home articles')
-      if (this.articles) {
-        this.articles.forEach((item) => {
-          console.log(item)
-          item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
-          newArticles.push(item)
-        })
-      }
-      return newArticles
+    articlesList () {
+      return this.$store.getters.getArticleList
     }
   }
 }

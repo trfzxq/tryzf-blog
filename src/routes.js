@@ -1,13 +1,25 @@
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: resolve => require(['./components/Home/index'], resolve)
+    redirect: '/home'
   },
   {
-    path: '/article/:id',
-    name: 'article',
-    component: resolve => require(['./components/Detaile/index'], resolve)
+    path: '/home/',
+    name: 'home',
+    redirect: '/home/article',
+    component: resolve => require(['./components/Home/index'], resolve),
+    children: [
+      {
+        path: 'article/:id',
+        name: 'articleDetaile',
+        component: resolve => require(['./components/Detaile/index'], resolve)
+      },
+      {
+        path: 'article',
+        name: 'articleList',
+        component: resolve => require(['./components/Home/HomeBody'], resolve)
+      }
+    ]
   },
   {
     path: '/login',

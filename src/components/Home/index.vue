@@ -2,7 +2,13 @@
   <div>
     <headerComponent></headerComponent>
     <minHeader v-once></minHeader>
-    <BodyComponent :articles="articles"></BodyComponent>
+    <transition
+      name="custom-classes-transition"
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
+      <router-view></router-view>
+    </transition>
     <UserInfo :userInfo="userInfo" :socailContact="socailContact"></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
@@ -11,7 +17,6 @@
 <script>
 import headerComponent from '../common/Header'
 import minHeader from '../common/MinHeader'
-import BodyComponent from './Body'
 import UserInfo from '../common/UserInfo'
 import FooterComponent from '../common/Footer'
 import { mapState } from 'vuex'
@@ -23,25 +28,24 @@ export default {
     }
   },
   computed: mapState({
-    articles: 'articles',
     userInfo: 'userInfo',
     socailContact: 'socailContact'
   }),
   created () {
-    this.getArticle()
     this.getUserInfo()
     this.getSocailContact()
     this.getNavList()
+    this.getArticle()
   },
   methods: {
-    getArticle () {
-      this.$store.dispatch('getArticle', { limit: this.limit, skip: this.skip })
-    },
     getUserInfo () {
       this.$store.dispatch('getUserInfo')
     },
     getSocailContact () {
       this.$store.dispatch('getSocailContact')
+    },
+    getArticle () {
+      this.$store.dispatch('getArticle', { limit: this.limit, skip: this.skip })
     },
     getNavList () {
       this.$store.dispatch('getNavList')
@@ -50,7 +54,6 @@ export default {
   components: {
     headerComponent,
     minHeader,
-    BodyComponent,
     UserInfo,
     FooterComponent
   }
