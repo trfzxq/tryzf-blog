@@ -36,4 +36,3 @@ app.get('/*', (req, res) => {
   return res.sendFile(__dirname + '/dist/index.html')
 })
 app.listen(3002)
-console.log('hello world')
