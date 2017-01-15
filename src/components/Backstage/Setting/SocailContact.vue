@@ -6,17 +6,17 @@
           <div class="input-group-addon">
             <i class="glyphicon glyphicon-flag"></i>
           </div>
-          <input ref="src" class="form-control input-lg" type="text" placeholder="图标src" v-model="newSocailContact.src"/>
+          <input ref="src" class="form-control input-lg" type="text" placeholder="图标src"/>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><i class="glyphicon glyphicon-road"></i></div>
-          <input ref="path" class="form-control input-lg" type="text" placeholder="社交链接" v-model="newSocailContact.path"/>
+          <input ref="path" class="form-control input-lg" type="text" placeholder="社交链接"/>
         </div>
       </div>
       <div class="form-group">
-        <input type="checkbox" ref="checkbox" v-model="newSocailContact.isAction"/>显示
+        <input type="checkbox" ref="isAction"/>显示
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-lg visible-xs-12" type="button" @click="save">{{ buttonText }}</button>
@@ -52,14 +52,10 @@
 export default {
   data () {
     return {
-      'newSocailContact': {
-        src: '',
-        path: '',
-        isAction: true,
-        isUpdate: false
-      },
       'buttonText': '添加',
-      'updateItemIndex': null
+      'updateItemIndex': null,
+      'isUpdate': false,
+      'updateIndex': 0
     }
   },
   computed: {
@@ -76,21 +72,29 @@ export default {
     remove (index) {
       this.$store.dispatch('removeSocailContact', index)
     },
-    save () {
+    getNewSocailContactObj () {
       let data = {
-        src: this.newSocailContact.src,
-        path: this.newSocailContact.path,
-        isAction: this.newSocailContact.isAction
+        src: this.$refs.src.value,
+        path: this.$refs.path.value,
+        isAction: this.$refs.isAction.checked
       }
-      if (this.newSocailContact.isUpdate) {
+      return data
+    },
+    save (index) {
+      let data = this.getNewSocailContactObj()
+      if (this.isUpdate) {
         data._id = this.updateItemIndex
-        let putData = {
+        let updateData = {
           data: data,
-          newSocailContactList: this.socailContact
+          index: this.updateIndex
         }
-        this.$store.dispatch('updateSocailContact', putData)
+        this.$store.dispatch('updateSocailContact', updateData)
         .then(() => {
           this.buttonText = '添加'
+          this.isUpdate = false
+          this.$refs.src.value = ''
+          this.$refs.path.value = ''
+          this.$refs.isAction.checked = true
         })
       } else {
         this.$store.dispatch('saveSocailContact', data)
@@ -101,10 +105,13 @@ export default {
     },
     getUpdateObj (index) {
       let indexValue = this.socailContact[index]
-      this.newSocailContact = indexValue
-
-      this.newSocailContact.isUpdate = true
+      this.$refs.src.value = indexValue.src
+      this.$refs.path.value = indexValue.path
+      this.$refs.isAction.checked = indexValue.isAction
+      // 点击tr改变按钮文字与是否更改的标识,获取id
+      this.isUpdate = true
       this.buttonText = '更改'
+      this.updateIndex = index
       this.updateItemIndex = this.socailContact[index]._id
     }
   },

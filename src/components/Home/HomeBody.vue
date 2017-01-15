@@ -18,7 +18,7 @@
             </span>
           </div>
           <div class="pull-right">
-            <router-link :to="'/article/' + item._id">
+            <router-link :to="'/home/article/' + item._id">
             <i class="glyphicon glyphicon-fullscreen"></i>
               查看全文
             </router-link>
@@ -53,7 +53,7 @@ export default {
     bottom: 0;
     height: 30px;
     width: 100%;
-    background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(255, 255, 255, 0.6)), to(rgba(255, 255, 255, 0.8)));
+    box-shadow: inset 0 -15px 30px #fff;
   }
   .article-list_ul li {
     margin-bottom: 60px;

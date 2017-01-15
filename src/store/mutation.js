@@ -23,8 +23,10 @@ export default {
   [types.SAVESOCAILCONTACT] (state, data) {
     state.socailContact.push(data)
   },
-  [types.UPDATESOCAILCONTACT] (state, data) {
-    state.socailContact = data
+  [types.UPDATESOCAILCONTACT] (state, updateData) {
+    let index = updateData.index
+    let newData = updateData.data
+    state.socailContact.splice(index, 1, newData)
   },
   [types.REMOVESOCAILCONTACT] (state, index) {
     state.socailContact.splice(index, 1)
