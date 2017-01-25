@@ -45,6 +45,14 @@ const userInfoSchema = new Schema({
   motto: String
 })
 
+const archiveSchema = new Schema({
+  title: String,
+  time: Date,
+  id: String,
+  createdYear: Number,
+  createdMonth: Number
+})
+
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema),
@@ -52,6 +60,7 @@ const Models = {
   Nav: mongoose.model('Nav', navSchema),
   SocialContact: mongoose.model('SocialContact', socialContactSchema),
   UserInfo: mongoose.model('UserInfo', userInfoSchema),
+  Archive: mongoose.model('Archive', archiveSchema),
   initialized: false
 }
 

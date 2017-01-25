@@ -5,8 +5,7 @@
     <transition
       name="custom-classes-transition"
       enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeInOut"
-    >
+      leave-active-class="animated fadeInOut">
       <router-view></router-view>
     </transition>
     <UserInfo :userInfo="userInfo" :socailContact="socailContact"></UserInfo>

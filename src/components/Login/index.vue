@@ -55,7 +55,7 @@ export default {
 </script>
 <style lang="css" scoped>
 .login-module{
-  box-shadow: 1px 2px 4px #ccc;
+  box-shadow: 0px 1px 60px #ccc;
   border-radius: 8px;
   padding:20px;
   margin-top:6%;

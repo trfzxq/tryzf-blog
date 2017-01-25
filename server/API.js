@@ -57,30 +57,13 @@ module.exports = function (app) {
   app.get('/api/getArticle', (req, res) => {
     let limit = Number(req.query.limit) || 1
     let start = Number(req.query.skip) || 1
-    let query = req.query.name || {}
 
-    db.Article.count(query, function(err, data) {
-      return new Promise((resolve, reject) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve(data)
-        }
+    let promise = db.Article.count()
+    promise.then((count) => {
+      return db.Article.find().skip((start - 1) * limit).sort({date: -1}).limit(limit).exec((err, data) => {
+        res.json({state: 1, 'articles': data, 'total': count})
       })
-    }).then((count) => {
-      if (count < limit) {
-        start = 1
-      } else {
-        start = start * limit
-      }
-      db.Article.find().skip((start - 1) * limit).sort({date: -1}).limit(limit).exec((err, data) => {
-        if(err) {
-          res.json({state: 0, msg: err})
-        } else {
-          res.json({state: 1, 'articles': data, 'total': count})
-        }
-      })
-    }, (err) => {
+    }).catch(err => {
       res.json({state: 0, msg: err})
     })
   });
@@ -112,22 +95,35 @@ module.exports = function (app) {
   */
   app.post('/api/createdArticle', (req, res) => {
     let {title, content, types, sourceContent} = req.body
+    let date = new Date()
+    let createdArticleTime = date.toLocaleString()
+    let createdArticleYear = date.getFullYear()
+    let createdArticleMonth = date.getMonth() + 1
     types = types.split(';')
     let article = {
       title: title,
-      date: (new Date()).toLocaleString(),
+      date: createdArticleTime,
       content: content,
       types: types,
       sourceContent: sourceContent,
       author: session.username
     }
-    console.log('sourceContent', sourceContent)
-    db.Article(article).save((err, data) => {
-      if (err) {
-        res.json({state: 0, msg: err})
-      } else {
-        res.json({state: 1, msg: '创建成功'})
-      }
+    let archive = {
+      title: title,
+      time: createdArticleTime,
+      createdYear: createdArticleYear,
+      createdMonth: createdArticleMonth
+    }
+    db.Article(article).save()
+    .then((data) => {
+      archive.id = data._id
+      db.Archive(archive).save()
+    })
+    .then(() => {
+      res.json({state: 1, msg: '创建成功'})
+    })
+    .catch(err => {
+      res.json({state: 0, msg: err})
     })
   });
 
@@ -151,6 +147,28 @@ module.exports = function (app) {
     })
   })
 
+  /*  获取归档列表
+  *
+  */
+  app.get('/api/getArchive', (req, res) => {
+    db.Archive.aggregate([
+      {
+        $sort: { createdYear: -1}
+      },
+      {
+        $group: {
+          _id: "$createdYear",
+          articleList: { $push: "$$ROOT"}
+        }
+      }
+    ]).exec((err, data) => {
+      if (err) {
+        res.json({state: 0, msg: err})
+      } else {
+        res.json({state: 1, archive: data})
+      }
+    })
+  })
 
   /*草稿箱
   * @body title: 文章标题

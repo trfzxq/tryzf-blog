@@ -81,5 +81,9 @@ export default {
   },
   [types.SEARCH] (state, articles) {
     state.articles = articles
+  },
+  [types.GETARCHIVE] (state, archive) {
+    console.log(archive, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    state.archiveList = archive
   }
 }

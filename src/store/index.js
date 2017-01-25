@@ -25,7 +25,9 @@ const state = {
   navList: [],
   socailContact: [],
   temporaryArticle: null,
-  modal: modal
+  modal: modal,
+  articleList: [],
+  archiveList: []
 }
 
 const getters = {

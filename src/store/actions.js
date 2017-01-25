@@ -101,6 +101,13 @@ export default {
       console.log(response)
     })
   },
+  getArchive ({ commit }) {
+    return api.getArchive().then(response => {
+      commit(types.GETARCHIVE, response.data.archive)
+    }, response => {
+      console.log(response)
+    })
+  },
   removeArticle ({ commit, state }, index) {
     let id = [...state.articles][index]._id
     showModal(commit, {

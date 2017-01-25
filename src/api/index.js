@@ -57,5 +57,8 @@ export default {
   },
   search: function (id) {
     return types.Search.get({id: id})
+  },
+  getArchive: function () {
+    return types.GetArchive.get()
   }
 }

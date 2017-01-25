@@ -18,6 +18,11 @@ const routes = [
         path: 'article',
         name: 'articleList',
         component: resolve => require(['./components/Home/HomeBody'], resolve)
+      },
+      {
+        path: 'archive',
+        name: 'archive',
+        component: resolve => require(['./components/Archive/index'], resolve)
       }
     ]
   },
