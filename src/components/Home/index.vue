@@ -8,6 +8,9 @@
       leave-active-class="animated fadeInOut">
       <router-view></router-view>
     </transition>
+    <div class="col-xs-8 col-xs-offset-2">
+      <Pager :limit='limit'></Pager>
+    </div>
     <UserInfo :userInfo="userInfo" :socailContact="socailContact"></UserInfo>
     <FooterComponent></FooterComponent>
   </div>
@@ -18,12 +21,13 @@ import headerComponent from '../common/Header'
 import minHeader from '../common/MinHeader'
 import UserInfo from '../common/UserInfo'
 import FooterComponent from '../common/Footer'
+import Pager from '../common/Pager'
 import { mapState } from 'vuex'
 export default {
   data () {
     return {
       skip: 0,
-      limit: 10
+      limit: 3
     }
   },
   computed: mapState({
@@ -46,6 +50,9 @@ export default {
     getArticle () {
       this.$store.dispatch('getArticle', { limit: this.limit, skip: this.skip })
     },
+    getArticleList (skip) {
+      this.$store.dispatch('getArticle', {limit: this.limit, skip: skip})
+    },
     getNavList () {
       this.$store.dispatch('getNavList')
     }
@@ -54,6 +61,7 @@ export default {
     headerComponent,
     minHeader,
     UserInfo,
+    Pager,
     FooterComponent
   }
 }

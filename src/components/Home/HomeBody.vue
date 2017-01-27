@@ -31,6 +31,7 @@
 
 <script>
 import moment from 'moment'
+import Pager from '../common/Pager'
 export default {
   name: 'articleList',
   computed: {
