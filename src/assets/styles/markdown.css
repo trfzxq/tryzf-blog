@@ -16,6 +16,12 @@ article img {
 article blockquote {
   padding-left: 20px;
   margin-bottom: 20px;
+  border-color: #28a745;
+  font-size:15px;
+}
+article li {
+  list-style:georgian;
+  font-weight: bold;
 }
 article pre {
   letter-spacing: 0;

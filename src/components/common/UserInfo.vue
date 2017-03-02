@@ -15,7 +15,7 @@
       <div class="col-sm-4">
         <ul class="socail-contact_ul">
           <li v-for="item in socailContact" key="item._id">
-            <router-link :to="item.path"><img :src="item.src" v-if="item.isAction"/></router-link>
+            <a :href="item.path"><img :src="item.src" v-if="item.isAction"/></a>
           </li>
         </ul>
       </div>
