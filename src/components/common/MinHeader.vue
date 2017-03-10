@@ -80,7 +80,7 @@ export default {
   figure {
     width:100%;
     height: 100%;
-    background:url('/static/4.jpg') left -118px;
+    background:url('/static/4.jpg') left -44px;
     background-size:cover;
   }
   .canvas{

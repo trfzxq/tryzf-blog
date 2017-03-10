@@ -18,11 +18,18 @@ export default {
   },
   created () {
     this.getArticle()
+    this.hidePagerComponent()
   },
   methods: {
     getArticle () {
       this.$store.dispatch('getArticleDetaile', this.$route.params.id)
+    },
+    hidePagerComponent () {
+      this.$store.dispatch('changePagerStatus', false)
     }
+  },
+  destroyed () {
+    this.$store.dispatch('changePagerStatus', true)
   },
   components: {
     BodyComponent,

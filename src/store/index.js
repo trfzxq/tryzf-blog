@@ -18,6 +18,7 @@ const state = {
   articles: [],
   currPage: 1,
   currUpdateArticle: {},
+  pagerIsShow: true,
   isUpdateArticle: false,
   articlesTotal: 0,
   articleDetaile: {},

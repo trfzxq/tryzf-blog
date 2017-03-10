@@ -263,5 +263,8 @@ export default {
     }, response => {
       console.log(response)
     })
+  },
+  changePagerStatus ({ commit }, newStatus) {
+    commit(types.CAHNGEPAGERSTATUS, newStatus)
   }
 }

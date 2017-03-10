@@ -1,14 +1,14 @@
 <template lang="html">
-  <nav>
+  <nav v-if="isShow()">
     <div v-if="!isTotal()">
       <h1>当前还没有数据</h1>
     </div>
     <ul class="pagination"  v-if="isTotal()">
       <li><a @click.prevent="prev()">&laquo;</a></li>
-        <li v-if="pageSize <= limit" class="active">
-          <a>1</a>
-        </li>
-      <template v-if="pageSize > limit">
+      <li v-if="pageSize === 1" class="active">
+        <a>1</a>
+      </li>
+      <template v-if="pageSize > 1">
         <li :class="{active: currPage == 1}"><a @click.prevent="changePage(1)">1</a></li>
         <li v-if="currPage - 3 > 1"><a @click.prevent="changePage(currPage-3)">……</a></li>
         <li v-if="currPage - 2 > 1"><a @click.prevent="changePage(currPage-2)">{{ currPage - 2 }}</a></li>
@@ -31,6 +31,9 @@ export default {
     return {
       isTotal: function () {
         return this.$store.state.articlesTotal !== 0
+      },
+      isShow: function () {
+        return this.$store.state.pagerIsShow
       }
     }
   },
@@ -47,6 +50,7 @@ export default {
       if (this.currPage !== page) {
         this.$store.dispatch('setCurrPage', page)
         this.$parent.getArticleList(page)
+        document.body.scrollTop = 380
       }
     },
     next () {

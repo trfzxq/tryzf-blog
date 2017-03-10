@@ -83,7 +83,9 @@ export default {
     state.articles = articles
   },
   [types.GETARCHIVE] (state, archive) {
-    console.log(archive, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     state.archiveList = archive
+  },
+  [types.CAHNGEPAGERSTATUS] (state, newStatus) {
+    state.pagerIsShow = newStatus
   }
 }

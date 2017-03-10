@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="form-group">
-        <input type="checkbox" ref="isAction"/>显示
+        <input type="checkbox" ref="isAction" /> 显示
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-lg visible-xs-12" type="button" @click="save">{{ buttonText }}</button>
@@ -45,6 +45,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
 </template>
 
