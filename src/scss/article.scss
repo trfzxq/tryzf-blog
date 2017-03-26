@@ -1,0 +1,50 @@
+@import './variable.scss';
+
+article {
+  margin-bottom: 66px;
+  padding:30px 0;
+  border-bottom:4px rgba(0,0,0,.05) solid;
+}
+.article_title {
+  font-size: 30px;
+  color: $articleTitle;
+  text-align: center;
+  position: relative;
+}
+.article_content {
+  margin:30px 0;
+  font-size:18px;
+  color: $articleContent;
+  line-height: 1.8;
+  max-height:180px;
+
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+
+  p {
+    text-indent: 2rem;
+    margin-bottom:20px;
+  }
+}
+.fa {
+  margin-right:10px;
+}
+.article_info {
+  padding: 20px 0 8px 0;
+  color:$childTitle;
+  text-align: center;
+  span {
+    margin-right:10px;
+  }
+  .bottom_border {
+    padding-bottom:10px;
+    display: inline;
+    border-bottom:1px rgba(0,0,0,.05) dashed;
+  }
+}
+.article_tags {
+  color: $childTitle;
+}

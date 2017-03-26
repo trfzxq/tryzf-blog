@@ -1,0 +1,37 @@
+[
+  {
+    "type": "User",
+    "username": "zlj",
+    "password": "11223344"
+  },
+  {
+    "type": "UserInfo",
+    "username": "zlj",
+    "blogTitle": "爱吃猪蹄的小姑娘",
+    "headURL": "http://tse1.mm.bing.net/th?&id=OIP.M4343cb2365f84528b061d4a7ec35fd9fo0&w=199&h=162&c=0&pid=1.9&rs=0&p=0&r=0",
+    "motto": "server the people"
+  },
+  {
+    "type": "Nav",
+    "text": "首页",
+    "path": "/"
+  },
+  {
+    "type": "SocialContact",
+    "src": "/img/wx.png",
+    "isAction": true,
+    "path": "/"
+  },
+  {
+    "type": "SocialContact",
+    "src": "/img/wb.png",
+    "isAction": true,
+    "path": "/"
+  },
+  {
+    "type": "SocialContact",
+    "src": "/img/github.png",
+    "isAction": true,
+    "path": "/"
+  }
+]
