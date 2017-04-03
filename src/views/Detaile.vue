@@ -51,7 +51,7 @@
   }
 </script>
 <style lang="scss" >
-@import '../scss/markdown.css';
+@import '../scss/markdown.scss';
 @import '~highlight.js/styles/atom-one-light.css';
 .article_container {
   padding: 20px 0;
