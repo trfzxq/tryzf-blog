@@ -27,3 +27,6 @@ npm run start
 > 'mongodb://127.0.0.1:27017/数据库名 (数据库无帐号密码)
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+##SSR分支：
+> SSR分支是用vue服务端渲染，减少首屏时间，优化SEO。
