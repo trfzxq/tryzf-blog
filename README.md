@@ -28,10 +28,3 @@ npm run start
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-
-## SSR分支：
-
-> SSR分支是用vue服务端渲染，减少首屏时间，优化SEO。vue-router更换为axios
-``` bash
-npm run dev
-```
