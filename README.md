@@ -31,4 +31,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ## SSR分支：
 
-> SSR分支是用vue服务端渲染，减少首屏时间，优化SEO。
+> SSR分支是用vue服务端渲染，减少首屏时间，优化SEO。vue-router更换为axios
+``` bash
+npm run dev
+```
