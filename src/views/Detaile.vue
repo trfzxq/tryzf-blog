@@ -19,11 +19,13 @@
           <span v-for="item in article.types">{{ item }}</span>
         </section>
       </article>
+      <Comment :comment="article"></Comment>
     </main>
   </div>
 </template>
 
 <script>
+  import Comment from 'components/Comment.vue'
   export default {
     data () {
       return {
@@ -42,14 +44,13 @@
         console.log(this.$route.params.id)
         this.$store.dispatch('getArticleDetaile', this.$route.params.id)
       }
+    },
+    components: {
+      Comment
     }
   }
 </script>
 <style lang="scss" >
-$fa-font-path: '~font-awesome/fonts/';
-@import '~font-awesome/scss/font-awesome';
-@import '../scss/article';
-
 .article_container {
   padding: 20px 0;
 }

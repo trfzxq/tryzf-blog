@@ -38,6 +38,20 @@ a{
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
+.offset-left-1 {margin-left: 8.33%;}
+.offset-left-2 {margin-left: 16.66%;}
+.offset-left-3 {margin-left: 25%;}
+.offset-left-4 {margin-left: 33.33%;}
+.offset-left-5 {margin-left: 41.66%;}
+.offset-left-6 {margin-left: 50%;}
+
+.offset-right-1 {margin-right: 8.33%;}
+.offset-right-2 {margin-right: 16.66%;}
+.offset-right-3 {margin-right: 25%;}
+.offset-right-4 {margin-right: 33.33%;}
+.offset-right-5 {margin-right: 41.66%;}
+.offset-right-6 {margin-right: 50%;}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="col-"] {

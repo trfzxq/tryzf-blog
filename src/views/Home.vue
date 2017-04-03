@@ -26,11 +26,13 @@
         <button type='button' class="load-some_btn" @click="loadSomeArticle">加载更多</button>
       </section>
     </main>
+    <Top />
   </div>
 </template>
 
 <script>
   import cUserInfo from 'components/cUserInfo'
+  import Top from 'components/Top'
   function preFetch (store) {
     return store.dispatch('getArticle', { limit: 3, skip: 1 })
   }
@@ -71,7 +73,8 @@
         this.$store.dispatch('getSocailContact')
       },
       loadSomeArticle () {
-        if ((this.$store.state.articlesTotal / this.limit) >= this.skip) {
+        console.log(this.$store.state.articlesTotal / this.limit)
+        if ((this.$store.state.articlesTotal / this.limit) <= this.skip) {
           this.isLoadBtn = false
         }
         ++this.skip
@@ -79,15 +82,13 @@
       }
     },
     components: {
-      cUserInfo
+      cUserInfo,
+      Top
     }
   }
 </script>
 <style lang="scss" >
-$fa-font-path: '~font-awesome/fonts/';
-@import '~font-awesome/scss/font-awesome';
 @import '../scss/article';
-
 .article_container {
   padding: 20px 0;
 }

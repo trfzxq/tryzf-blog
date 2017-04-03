@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <cHeader :navList=navList @searchHandler = search />
+    <cHeader v-if="isHeader" :navList="navList" @searchHandler="search"/>
     <div class="view">
       <transition
         mode="out-in"
@@ -10,8 +10,8 @@
         appear-active-class=null>
           <router-view class="animated"></router-view>
       </transition>
+      <cFooter />
     </div>
-    <cFooter/>
   </div>
 </template>
 
@@ -19,12 +19,14 @@
 'use strict'
 import cFooter from 'components/cFooter'
 import cHeader from 'components/cHeader'
-import NProgress from 'nprogress'
 export default {
   name: 'app',
   computed: {
     navList () {
       return this.$store.state.navList
+    },
+    isHeader () {
+      return this.$store.state.isHeader
     }
   },
   created () {
@@ -38,12 +40,6 @@ export default {
       this.$store.dispatch('search', key)
     }
   },
-  watch: {
-    progress (to) {
-      NProgress.start()
-      NProgress.set(to)
-    }
-  },
   components: {
     cFooter,
     cHeader
@@ -52,8 +48,16 @@ export default {
 </script>
 
 <style lang="scss" >
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome';
 @import '~animate.css';
+@import './scss/toast.scss';
+@import './scss/grid.scss';
 .animated {
   animation-duration: .377s;
+}
+#cnzz_stat_icon_1261460333 {
+  position:fixed;
+  bottom:0;
 }
 </style>

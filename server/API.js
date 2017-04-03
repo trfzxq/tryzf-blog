@@ -1,6 +1,7 @@
 const db = require('./db.js');
 const uuid = require('node-uuid')
 const crypto = require('crypto')
+const btoa = require('btoa')
 
 const session = {
   token: null,
@@ -12,13 +13,18 @@ module.exports = function (app) {
   app.delete('/api/*', checkLogin)
   app.put('/api/*', checkLogin)
 
-  app.get('/api/*', isIllegal)
   /* 登录
   *  @body username
   *  @body password
   */
   app.post('/api/login', (req, res) => {
     let {username, password} = req.body
+    if (!username) {
+      return res.send({state: 0, msg: '帐号不能为空'})
+    }
+    if (!password) {
+      return res.send({state: 0, msg: '密码不能为空'})
+    }
     password = createdMd5Pwd(password)
     db.User.findOne({ username }, (err, doc) => {
       switch (true) {
@@ -73,10 +79,13 @@ module.exports = function (app) {
   */
 
   app.get('/api/search', (req, res) => {
-    let key = req.query.key
+    let key = req.query.id
+    let limit = 40
+    let start = 1
     let pattern = new RegExp( key, 'i')
-    db.Article.find({ 'content': pattern })
-    .sort({ date: -1})
+    db.Article.find({ 'title': {$regex : pattern}})
+    .skip((start - 1) * limit)
+    .limit(limit)
     .exec(function(err, docs) {
 	    if (err) {
         res.json({state: 0, msg: err})
@@ -420,9 +429,9 @@ app.delete('/api/removeNav', (req, res) => {
 */
 function createToken (username) {
   let token = uuid.v4()
-  session.token = token
+  session.token = btoa(token)
   session.username = username
-  return token
+  return btoa(token)
 }
 //登出
 function signout () {
@@ -444,14 +453,5 @@ function checkLogin(req, res, next) {
     next()
   } else {
     res.status(403).send('您没有权限访问！');
-  }
-}
-//过滤非法操作访问
-function isIllegal (req, res, next) {
-  let token = req.headers.authorization
-  if (!session.token && token) {
-    res.status(403).send('您没有权限访问！')
-  } else {
-    next()
   }
 }

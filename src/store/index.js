@@ -7,15 +7,8 @@ import moment from 'moment'
 
 Vue.use(Vuex)
 
-const modal = {
-  show: false,
-  type: 'info',
-  message: '模拟提示',
-  ok: () => {},
-  cancel: () => {}
-}
-
 const state = {
+  isHeader: true,
   articles: [],
   currPage: 1,
   currUpdateArticle: {},
@@ -27,7 +20,6 @@ const state = {
   navList: [],
   socailContact: [],
   temporaryArticle: null,
-  modal: modal,
   articleList: [],
   archiveList: []
 }

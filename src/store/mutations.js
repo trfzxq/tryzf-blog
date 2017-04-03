@@ -15,6 +15,10 @@ export default {
     })
     state.articlesTotal = data.total
   },
+  [types.GETARTICLELIST] (state, data) {
+    state.articleList = data.articles
+    state.articlesTotal = data.total
+  },
   [types.GETARTICLEDETAILE] (state, data) {
     state.articleDetaile = data
   },

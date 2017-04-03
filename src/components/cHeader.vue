@@ -1,5 +1,5 @@
 <template>
-  <header class="row">
+  <header class="row font-header">
     <section class="col-1 logo_box">
       <a href="/">
         <img src="http://tryzf.xyz/static/logo.png" class="logo">
@@ -10,10 +10,10 @@
         {{ item.text }}
       </router-link>
     </section>
-    <section class="col-1">
+    <section class="col-1 search-icon">
       <i class="fa fa-search search" @click="showSearch"></i>
     </section>
-    <section class="col-12 search-main fade animated" v-if="isSearchShow">
+    <section class="col-12 search-main fadeIn animated" v-if="isSearchShow">
       <div class="search_input__box">
         <input type="search" v-model="searchKey" placeholder="搜索文章">
         <button type="button" @click="search">搜索</button>
@@ -36,6 +36,7 @@ export default {
     },
     search () {
       this.$emit('searchHandler', this.searchKey)
+      this.isSearchShow = false
     }
   }
 }
@@ -43,19 +44,25 @@ export default {
 <style lang="scss">
   @import '../scss/grid.scss';
   @import '../scss/variable';
-  header {
+  .font-header {
     width: 100%;
-    height: 80px;
-    line-height: 80px;
+    height: 30px;
+    line-height: 30px;
     background:$menuBg;
-
+    box-shadow:1px 2px 4px #ccc;
+    .router-link-active {
+      background:none;
+    }
     .search {
-      font-size:30px;
+      font-size:12px;
       color:#eee;
       cursor:pointer;
       &:active{
         color:#eee;
       }
+    }
+    .search-icon {
+      text-align:center;
     }
     .search-main {
       background:#fff;
@@ -63,6 +70,7 @@ export default {
     }
     .search_input__box{
       text-align:center;
+      padding:10px 0;
       button {
         color:#fff;
         background:#5cadff;
@@ -96,15 +104,16 @@ export default {
 
     .logo_box {
       text-align:center;
+      height:100%;
     }
     .logo {
-      width: 80px;
-      height: 30px;
+      width: 40px;
+      height: 16px;
     }
 
     .nav_tag{
       color:$navTextColor;
-      font-size:20px;
+      font-size:12px;
       font-weight:bold;
       margin-right:30px;
       &:hover {

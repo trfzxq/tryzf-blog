@@ -1,0 +1,26 @@
+.toast {
+  position: fixed;
+  top: 30px;
+  right:100px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #fff;
+  color:#c9cabb;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  z-index: 11000;
+  .icon-i {
+    color:#3399ff;
+  }
+  .icon-e {
+    color:#ff3300;
+  }
+  .icon-s {
+    color:#00cc66;
+  }
+  .icon-w {
+    color:#ff9900;
+  }
+  .icon-q {
+    color:#ff9900;
+  }
+}
