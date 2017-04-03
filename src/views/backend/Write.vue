@@ -30,6 +30,7 @@
     },
     computed: {
       tempArticle () {
+        console.log(this.$store.state.updateArticle)
         let article = this.$store.state.updateArticle || this.$store.state.temporaryArticle || {}
         if (article.types instanceof Array) {
           article.types = article.types.join(';')
@@ -51,7 +52,7 @@
         this.$store.dispatch('createdArticle', data)
         .then(msg => {
           this.$toast({text: msg, type: 's'})
-          this.$router.push('/backstage/articleList')
+          this.$router.push({path: '/backend/manage'})
         })
         .catch(error => {
           this.$toast({text: error, type: 'e'})
@@ -67,7 +68,7 @@
         this.$store.dispatch('updateArticle', data)
         .then(msg => {
           this.$toast({text: msg, type: 's'})
-          this.$router.push('/backstage/articleList')
+          this.$router.push({path: '/backend/manage'})
         })
         .catch(error => {
           this.$toast({text: error, type: 'e'})

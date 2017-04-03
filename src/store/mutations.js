@@ -43,7 +43,7 @@ export default {
     state.navList = data
   },
   [types.REMOVEARTICLE] (state, index) {
-    state.articles.splice(index, 1)
+    state.articleList.splice(index, 1)
   },
   [types.SAVEARTICLE] (state, data) {
     state.temporaryArticle = data
@@ -67,7 +67,7 @@ export default {
     state.navList.splice(index, 1)
   },
   [types.SAVEUPDATEARTICLE] (state, index) {
-    state.updateArticle = state.articles[index]
+    state.updateArticle = state.articleList[index]
     state.isUpdateArticle = true
   },
   [types.UPDATEARTICLE] (state, data) {

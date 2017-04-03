@@ -115,7 +115,7 @@ export default {
     })
   },
   removeArticle ({ commit, state }, index) {
-    let id = [...state.articles][index]._id
+    let id = [...state.articleList][index]._id
     return api.removeArticle(id).then(response => {
       commit(types.REMOVEARTICLE, index)
     })

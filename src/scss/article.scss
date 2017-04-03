@@ -17,12 +17,7 @@ article {
   color: $articleContent;
   line-height: 1.8;
   max-height:180px;
-
   overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical
 
   p {
     text-indent: 2rem;
