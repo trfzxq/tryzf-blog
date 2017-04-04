@@ -1,6 +1,6 @@
 {
-  "name": "tryzf-blog",
-  "version": "1.2.0",
+  "name": "blog",
+  "version": "1.0.0",
   "description": "SAP blog SSR",
   "author": "tryzf",
   "private": false,
