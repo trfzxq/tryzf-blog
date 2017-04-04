@@ -1,8 +1,8 @@
 <template>
   <div>
     <cUserInfo :userInfo="userInfo" :socailContact="socailContact" />
-    <main class="container article_container">
-      <article v-for="item in articleList">
+    <main class="container">
+      <article v-for="item in articleList" class="home_article">
         <router-link :to="'/detaile/' + item._id" class="article_title_box">
           <h1 class="article_title">{{ item.title }}</h1>
         </router-link>
@@ -91,8 +91,12 @@
 @import '../scss/article';
 @import '../scss/markdown.scss';
 @import '~highlight.js/styles/atom-one-light.css';
-.article_container {
+.home_article {
   padding: 20px 0;
+  .article_content {
+    max-height:150px;
+    overflow:hidden;
+  }
 }
 .button_box {
   text-align:center;

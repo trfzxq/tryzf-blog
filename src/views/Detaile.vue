@@ -1,7 +1,7 @@
 <template>
   <div>
-    <main class="container article_container">
-      <article>
+    <main class="container">
+      <article class="detaile_article">
         <h1 class="article_title">{{ article.title }}</h1>
         <section class="article_info">
           <div class="bottom_border">
@@ -53,7 +53,7 @@
 <style lang="scss" >
 @import '../scss/markdown.scss';
 @import '~highlight.js/styles/atom-one-light.css';
-.article_container {
+.detaile_article {
   padding: 20px 0;
 }
 </style>
