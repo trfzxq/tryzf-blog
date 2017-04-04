@@ -2,7 +2,7 @@
   <header class="row font-header">
     <section class="col-1 logo_box">
       <a href="/">
-        <img src="http://tryzf.xyz/static/logo.png" class="logo">
+        <img src="http://7xslk1.com2.z0.glb.qiniucdn.com/logo.png" class="logo">
       </a>
     </section>
     <section class="col-10">
