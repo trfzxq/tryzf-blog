@@ -27,6 +27,8 @@ export default new Router({
     { path: '/', component: Home },
     { path: '/detaile/:id', component: Detaile },
     { path: '/login', component: Login },
+    { path: '/archive', component: Archive },
+    { path: '/about', component: About },
     {
       path: '/backend/',
       component: Backend,
@@ -48,7 +50,6 @@ export default new Router({
         }
       ]
     },
-    { path: '/archive', component: Archive },
-    { path: '/about', component: About }
+    { path: '*', component: Home }
   ]
 })
