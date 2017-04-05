@@ -26,6 +26,7 @@
 
 <script>
   import Comment from 'components/Comment.vue'
+  import {formatDateTime} from '../filters/index'
   export default {
     data () {
       return {
@@ -33,7 +34,9 @@
     },
     computed: {
       article () {
-        return this.$store.state.articleDetaile
+        var articleDetaile = this.$store.state.articleDetaile
+        articleDetaile.date = formatDateTime(new Date(articleDetaile.date))
+        return articleDetaile
       }
     },
     created () {

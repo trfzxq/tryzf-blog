@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import actions from './actions'
 import mutations from './mutations'
-import moment from 'moment'
+import {formatDateTime} from '../filters/index'
 
 Vue.use(Vuex)
 
@@ -27,7 +27,7 @@ const state = {
 const getters = {
   getArticleList: state => {
     state.articles.map(article => {
-      article.date = moment(new Date(article.date)).locale('zh-cn').calendar()
+      article.date = formatDateTime(new Date(article.date))
     })
     return state.articles
   }

@@ -28,7 +28,7 @@
 </template>
 <script>
 import Pager from 'components/Pager'
-import moment from 'moment'
+import { formatDateTime } from '../../filters/index'
 
 export default {
   data () {
@@ -41,7 +41,7 @@ export default {
       let newArticleList = []
       if (this.$store.state.articleList) {
         this.$store.state.articleList.forEach((item) => {
-          item.date = moment(new Date(item.date)).locale('zh-cn').calendar()
+          item.date = formatDateTime(new Date(item.date))
           newArticleList.push(item)
         })
       }

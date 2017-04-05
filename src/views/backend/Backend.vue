@@ -63,10 +63,16 @@
     },
     computed: {
       userInfo () {
+        console.log(this.$store.state.userInfo)
         return this.$store.state.userInfo
       },
       getTime () {
         return moment().locale('zh-cn').format('a')
+      }
+    },
+    created () {
+      if (!this.userInfo.headURL) {
+        this.getUserInfo()
       }
     },
     methods: {
@@ -77,6 +83,9 @@
       },
       goHome () {
         this.$router.push({path: '/'})
+      },
+      getUserInfo () {
+        this.$store.dispatch('getUserInfo')
       }
     }
   }
