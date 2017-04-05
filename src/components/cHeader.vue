@@ -108,7 +108,7 @@ export default {
     }
     .logo {
       width: 40px;
-      height: 16px;
+      height: 30px;
     }
 
     .nav_tag{
