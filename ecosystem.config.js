@@ -5,6 +5,7 @@ module.exports = {
     {
       name      : 'tryzf-blog',
       script    : 'server.js',
+      max_memory_restart: '500M',
       env: {
         NODE_ENV: 'production'
       },
