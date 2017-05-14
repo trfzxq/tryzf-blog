@@ -27596,7 +27596,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_2_vue___default.a(__WEBPACK_IMPORTED_MOD
 
 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.timeout = 10000;
 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.baseURL =  false ? 'http://localhost:8080' : 'http://tryzf.xyz';
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.baseURL =  false ? 'http://localhost:3000' : 'http://tryzf.xyz';
 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.validateStatus = function (status) {
   return status >= 200 && status < 300 || status === 304;
 };
