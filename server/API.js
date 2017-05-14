@@ -26,7 +26,7 @@ module.exports = function (app) {
       return res.send({state: 0, msg: '密码不能为空'})
     }
     password = createdMd5Pwd(password)
-    db.User.findOne({ username }, (err, doc) => {
+    db.User.findOne({ username}).exec((err, doc) => {
       switch (true) {
         case !!err:
           console.log(err)

@@ -4,7 +4,7 @@ import store from '../store/index.js'
 
 axios.defaults.timeout = 10000
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8080' : 'http://tryzf.xyz'
+axios.defaults.baseURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'http://tryzf.xyz'
 axios.defaults.validateStatus = function (status) {
   return status >= 200 && status < 300 || status === 304
 }
